@@ -1,0 +1,17 @@
+# Dev compose (optional). Prefer running backend + frontend separately via pdm/pnpm.
+
+name: projektveckor-portal-dev
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    image: projektveckor-portal-web:dev
+    container_name: projektveckor-portal-web-dev
+    environment:
+      PVP_ENVIRONMENT: dev
+      PYTHONPATH: /app/src
+    ports:
+      - "8000:8000"

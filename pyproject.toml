@@ -1,0 +1,59 @@
+[project]
+name = "projektveckor-portal"
+version = "0.1.0"
+description = "Teacher-first project-week portal hosted on hule.education (FastAPI + Vue/Vite)."
+authors = [{ name = "Olof Larsson", email = "paunchygent@gmail.com" }]
+readme = "README.md"
+requires-python = ">=3.13,<3.15"
+license = { text = "MIT" }
+
+dependencies = [
+  "fastapi",
+  "uvicorn[standard]",
+  "pydantic",
+  "pydantic-settings",
+]
+
+[dependency-groups]
+dev = [
+  "ruff",
+  "mypy",
+  "pytest",
+  "pytest-cov",
+]
+
+[tool.pdm.scripts]
+dev = "uvicorn projektveckor_portal.app:app --host 0.0.0.0 --port 8000 --reload"
+serve = "uvicorn projektveckor_portal.app:app --host 0.0.0.0 --port 8000"
+lint = "ruff check ."
+format = "ruff format ."
+typecheck = "mypy ."
+test = "pytest -q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+exclude = [
+  ".git",
+  ".venv",
+  "__pycache__",
+  ".mypy_cache",
+  ".pytest_cache",
+  ".ruff_cache",
+  "frontend/node_modules",
+  "frontend/dist",
+]
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I"]
+ignore = ["E203"]
+
+[tool.mypy]
+python_version = "3.13"
+warn_return_any = true
+warn_unused_configs = true
+check_untyped_defs = true
+explicit_package_bases = true
+namespace_packages = true
+mypy_path = "src"
+exclude = ["frontend/"]

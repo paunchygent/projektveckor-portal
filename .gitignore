@@ -1,0 +1,19 @@
+.DS_Store
+.env
+.venv/
+__pycache__/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.pdm-python
+dist/
+build/
+
+# Node/Vite
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Local tooling (do not commit)
+.tools/

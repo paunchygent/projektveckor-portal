@@ -1,0 +1,39 @@
+# Production deployment for home server (hemma.hule.education)
+# Usage: docker compose -f compose.prod.yaml build && docker compose -f compose.prod.yaml up -d
+#
+# Prerequisites:
+# - External network: docker network create hule-network
+# - Reverse proxy stack running (nginx-proxy + letsencrypt companion)
+
+name: projektveckor-portal
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    image: projektveckor-portal-web:latest
+    container_name: projektveckor-portal-web
+    restart: unless-stopped
+    environment:
+      PVP_ENVIRONMENT: production
+      PVP_SERVICE_VERSION: "0.1.0"
+      PYTHONPATH: /app/src
+      VIRTUAL_HOST: ${VIRTUAL_HOST:-projektveckor.hule.education}
+      VIRTUAL_PORT: "8000"
+      LETSENCRYPT_HOST: ${LETSENCRYPT_HOST:-projektveckor.hule.education}
+    expose:
+      - "8000"
+    networks:
+      - hule-network
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/healthz')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+networks:
+  hule-network:
+    external: true
