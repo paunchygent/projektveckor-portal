@@ -1,22 +1,34 @@
 ---
-id: "090-documentation-standards"
-type: "standards"
+trigger: model_decision
+rule_id: RULE-090
+title: Dokumentationsstandard (doc-as-code)
+status: active
 created: "2026-02-25"
-scope: "all"
+updated: "2026-02-26"
+owners:
+  - portal
+tags:
+  - docs-as-code
+scope: all
 ---
-
-# Documentation standards (doc-as-code)
 
 ## Canonical docs
 
-- `docs/index.md` is the documentation entrypoint.
-- `.agent/readme-first.md` is the agent entrypoint.
-- `.agent/handoff.md` holds cross-session context (current only).
-- `.agent/long-term-memory.md` is append-only durable memory.
+- `docs/index.md` är dokumentationsingång.
+- `docs/docs-structure-spec.md` beskriver taxonomin.
+- `docs/_meta/docs-contract.yaml` är kontraktet som validerar docs och regler.
 
 ## MUST
 
-- Keep `.agent/readme-first.md` and `.agent/handoff.md` structure stable.
-- Prefer links over duplication.
-- Avoid drift: when a workflow changes, update the rule that defines it.
+- Alla nya dokument under `docs/` ska ha YAML-frontmatter enligt kontraktet.
+- Backlog används för planering/leverans: `docs/backlog/`.
+- Beslut dokumenteras som ADR: `docs/decisions/`.
+- Referenser/rapporter/reviews dokumenteras i `docs/reference/`.
+- Kör validering före merge:
+  - `pdm run validate-docs`
+  - `pdm run validate-backlog`
+  - `pdm run check:md`
 
+## Agent-dokument
+
+- Håll strukturen stabil i `.agent/readme-first.md` och `.agent/handoff.md` (endast innehåll uppdateras).

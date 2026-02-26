@@ -20,6 +20,7 @@ dev = [
   "mypy",
   "pytest",
   "pytest-cov",
+  "pyyaml",
 ]
 
 [tool.pdm.scripts]
@@ -29,6 +30,33 @@ lint = "ruff check ."
 format = "ruff format ."
 typecheck = "mypy ."
 test = "pytest -q"
+
+# Doc-as-code
+validate-docs = "python -m scripts.docs_as_code.validate_docs"
+validate-backlog = "python -m scripts.docs_as_code.validate_tasks"
+index-backlog = "python -m scripts.docs_as_code.index_tasks --root docs/backlog --out docs/backlog/README-index.md --fail-on-missing"
+new-doc = "python -m scripts.docs_as_code.new_doc"
+new-task = "python -m scripts.docs_as_code.new_task"
+new-programme = "python -m scripts.docs_as_code.new_task --type programme"
+new-epic = "python -m scripts.docs_as_code.new_task --type epic"
+new-story = "python -m scripts.docs_as_code.new_task --type story"
+new-review = "python -m scripts.docs_as_code.new_task --type review"
+new-fix = "python -m scripts.docs_as_code.new_task --type fix"
+new-rule = "python -m scripts.docs_as_code.new_rule"
+
+# Markdown quality (Docforge-style: prettier + markdownlint-cli2)
+"lint:md" = "python -m scripts.maintenance.markdown_quality lint"
+"fix:md" = "python -m scripts.maintenance.markdown_quality fix"
+"format:md" = "python -m scripts.maintenance.markdown_quality format"
+"check:md" = "python -m scripts.maintenance.markdown_quality check"
+"autofix:md" = "python -m scripts.maintenance.markdown_quality autofix"
+
+# Frontend (run from repo root; Skriptoteket-style)
+"frontend:install" = "pnpm -C frontend install"
+"frontend:dev" = "pnpm -C frontend dev"
+"frontend:build" = "pnpm -C frontend build"
+"frontend:preview" = "pnpm -C frontend preview"
+"frontend:typecheck" = "pnpm -C frontend typecheck"
 
 [tool.ruff]
 line-length = 100

@@ -1,15 +1,20 @@
 ---
-id: "200-frontend-vue-vite"
-type: "standards"
+trigger: model_decision
+rule_id: RULE-200
+title: Frontend-standard (Vue/Vite)
+status: active
 created: "2026-02-25"
-scope: "frontend"
+updated: "2026-02-26"
+owners:
+  - portal
+tags: []
+scope: frontend
 ---
-
-# Frontend standards (Vue/Vite)
 
 ## MUST
 
 - Vue 3 + Vite + TypeScript.
-- No inline CSS in generated teacher-facing HTML exports (use external stylesheet).
-- Keep the portal navigable without SharePoint preview constraints (hosted on `hule.education`).
-
+- Stabila rutter för projektveckor (t.ex. `/fn-rollspel/v43`).
+- Portalen ska fungera utan SharePoints preview-begränsningar:
+  - statisk HTML-export i `frontend/public/...` kan bäddas in via `iframe`.
+- Inga inline-stilar i lärar-/export-HTML som vi vill återanvända (använd extern CSS).

@@ -1,0 +1,18 @@
+{
+  // markdownlint-cli2 options file
+  // https://github.com/DavidAnson/markdownlint-cli2
+  "config": ".markdownlint.json",
+  "globs": ["**/*.md", "**/*.mdc"],
+  "ignores": [
+    "**/node_modules/**",
+    "**/.git/**",
+    "**/.venv/**",
+    "**/.mypy_cache/**",
+    "**/.pytest_cache/**",
+    "**/.ruff_cache/**",
+    "frontend/node_modules/**",
+    "frontend/dist/**",
+    "build/**",
+    "output/**"
+  ]
+}

@@ -1,28 +1,67 @@
-# Projektveckor Portal — docs
+---
+type: spec
+id: SPEC-projektveckor-portal-docs
+title: Projektveckor Portal — dokumentation
+status: active
+created: "2026-02-26"
+updated: "2026-02-26"
+owners:
+  - portal
+tags:
+  - docs-as-code
+links:
+  - docs/docs-structure-spec.md
+  - docs/backlog/README.md
+  - docs/runbooks/runbook-hemma-deploy.md
+---
 
-This repo hosts a small portal for project weeks (e.g. FN-rollspel v.43) on `hule.education`.
+Det här repot bygger **Projektveckor Portal**: en webbportal för **Hulebäcksgymnasiets projektveckor** som hostas på `hule.education`.
 
-## Goals
+Huvudfokus är att göra **FN-rollspelsveckan** (förberedelsevecka + själva FN-rollspelet) tillgänglig som en samlad, interaktiv resurs för elever och delegationer — och samtidigt ge lärare en separat yta för publicering och administration.
 
-- One stable “start page” per project week.
-- Link into SharePoint resources (PDF/DOCX/folders) using correct URLs.
-- Keep styling consistent across weeks.
-- Keep week pages as stable SPA routes (e.g. `/fn-rollspel/v43`).
+## Målbild
 
-## Architecture (initial)
+- **En stabil startpunkt per projektvecka** (länkbar URL) som elever/lärare kan återkomma till.
+- **Allt material på rätt ställe**: portalen länkar vidare till SharePoint/Teams (PDF/DOCX/mappar) med robusta länkar.
+- **Interaktiv resurs** för FN-rollspelet: regler, roller, förhandlingsstöd, mallar (t.ex. resolutioner och policydokument).
+- **Två delar i samma portal**:
+  - **Elev-/delegationsdel**: navigation + resurser + “hjälp för att göra rätt”.
+  - **Lärardel (inloggning)**: bulletin/nyhetsflöde under spelet samt möjlighet att lägga till/uppdatera nedladdningsbara resurser.
+- På sikt: stöd för fler projektveckor (t.ex. “Stockholmsveckan”) med samma mönster.
 
-- FastAPI backend serves:
-  - `/healthz` for ops checks
-  - built SPA from `frontend/dist` in production
-- Vue/Vite frontend is the portal UI.
-- Some week content may be included as static HTML exports under `frontend/public/...` (copied into `dist/` at build time)
-  and embedded in SPA pages (iframe) to preserve navigation even when SharePoint preview blocks HTML→HTML links.
+## Arkitektur (nuvarande)
+
+- **Backend (FastAPI)** serverar:
+  - `/healthz` för driftscheck
+  - byggd SPA från `frontend/dist` i produktion
+- **Frontend (Vue/Vite)** är portalens UI med stabila rutter (t.ex. `/fn-rollspel/v43`).
+- **Statisk HTML-portal (v43)** finns redan i repot och bäddas in via `iframe`:
+  - Källfiler: `frontend/public/fn-rollspel/v43/portal/`
+  - Inbäddning: `frontend/src/pages/FnRollspelV43Page.vue`
+
+Det här upplägget gör att intern navigation (HTML→HTML) fungerar i webbläsaren även när SharePoints förhandsvisning/sandbox blockerar sådan navigation.
+
+## Innehållspipeline (Docforge → Portal)
+
+Docforge är “source of truth” för **varför** HTML-portalen finns och vilka constraints som gäller:
+
+- Syfte och constraint (SharePoint vs hostad portal):
+  - `docforge/TASKS/content/fn_rollspel/fn-rollspel-v43-ht25-sharepoint-html-portal.md`
+- Överlämningspaket och struktur (SharePoint/Teams som primär leverans):
+  - `docforge/TASKS/content/fn_rollspel/fn-rollspel-v43-ht25-overlamning.md`
+
+Praktiskt arbetsflöde:
+
+1. Skapa/uppdatera innehåll i Docforge (task + export/HTML vid behov).
+2. Kopiera in statiska HTML-exporter till `frontend/public/<projektvecka>/...` när de ska hostas här.
+3. Exponera dem som stabila SPA-rutter (och/eller iframe-inbäddning) i frontend.
+4. Länka till SharePoint-filer med **absoluta** URL:er (för att vara robust mot klientbeteende).
 
 ## Deploy
 
-See `docs/runbooks/runbook-hemma-deploy.md`.
+Se `docs/runbooks/runbook-hemma-deploy.md`.
 
 ## Dev workflow
 
-- Start backend: `pdm install -G dev` then `pdm run dev`
-- Start frontend: `pnpm -C frontend install` then `pnpm -C frontend dev`
+- Starta backend: `pdm install -G dev` och sedan `pdm run dev`
+- Starta frontend: `pdm run frontend:install` och sedan `pdm run frontend:dev`

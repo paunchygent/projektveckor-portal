@@ -13,13 +13,13 @@
     </header>
 
     <section class="panel">
-      <h2>Portal</h2>
-      <nav class="tabs" aria-label="FN-rollspel v43">
+      <h2>Portalen</h2>
+      <nav class="tabs" aria-label="FN-rollspel v.43">
         <RouterLink class="tab" :to="{ name: 'fn-rollspel-v43' }">Börja här</RouterLink>
         <RouterLink class="tab" :to="{ name: 'fn-rollspel-v43-schema' }">Schema</RouterLink>
         <RouterLink class="tab" :to="{ name: 'fn-rollspel-v43-bokningsinfo' }">Bokningsinfo</RouterLink>
         <a class="tab tab-secondary" :href="iframeSrc" target="_blank" rel="noopener">
-          Öppna HTML i ny flik
+          Öppna portalen i ny flik
         </a>
       </nav>
       <iframe class="docframe" :src="iframeSrc" :title="iframeTitle"></iframe>
@@ -44,9 +44,9 @@
     </section>
 
     <footer class="footer">
-      <RouterLink to="/">Tillbaka till startsidan</RouterLink>
+      <RouterLink to="/">Till startsidan</RouterLink>
       <span class="footer-sep">·</span>
-      <a href="/healthz" target="_blank" rel="noopener">healthz</a>
+      <a href="/healthz" target="_blank" rel="noopener">Driftstatus</a>
     </footer>
   </main>
 </template>

@@ -1,17 +1,23 @@
 ---
-id: "080-home-server-deployment"
-type: "standards"
+trigger: model_decision
+rule_id: RULE-080
+title: Deploy på hemma (hule.education)
+status: active
 created: "2026-02-25"
-scope: "ops"
+updated: "2026-02-26"
+owners:
+  - portal
+tags: []
+scope: ops
 ---
 
-# Home-server deployment (hule.education)
+## MUST
 
-Goal: deploy the portal on the home server, fronted by the existing reverse-proxy stack (same approach as Skriptoteket/HuleEdu).
+- Produktion hostas på `hule.education` (hemma).
+- Verifiera alltid:
+  - `GET /healthz` = 200
+  - startsidan laddar på hosten
 
-## Strategy (baseline)
+## Runbook
 
-- Run `compose.prod.yaml` on the server.
-- Attach to the shared external network `hule-network`.
-- Configure host routing via `VIRTUAL_HOST` + `LETSENCRYPT_HOST` environment variables (nginx-proxy pattern).
-
+- Se `docs/runbooks/runbook-hemma-deploy.md`.

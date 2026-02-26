@@ -2,7 +2,7 @@
   <main class="page">
     <header class="header">
       <h1>Projektveckor</h1>
-      <p class="sub">Portal (hostad på hule.education) — länkar till SharePoint-resurser.</p>
+      <p class="sub">Portalen på hule.education — länkar till SharePoint-resurser.</p>
     </header>
 
     <section class="panel">
@@ -10,23 +10,23 @@
       <ul>
         <li>
           <RouterLink to="/fn-rollspel/v43">FN-rollspel — v.43 (HT25)</RouterLink>
-          <span class="meta">— portal-sida</span>
+          <span class="meta">— portalsida</span>
         </li>
         <li>
           <a :href="weeks.fnRollspelV43.schemaUrl" target="_blank" rel="noopener">Schema v.43 (HT25)</a>
-          <span class="meta">— SharePoint</span>
+          <span class="meta">— PDF</span>
         </li>
         <li>
           <a :href="weeks.fnRollspelV43.bookingUrl" target="_blank" rel="noopener">
             Bokningsinfo externa aktörer
           </a>
-          <span class="meta">— SharePoint</span>
+          <span class="meta">— SharePoint-mapp</span>
         </li>
       </ul>
     </section>
 
     <footer class="footer">
-      <a href="/healthz" target="_blank" rel="noopener">healthz</a>
+      <a href="/healthz" target="_blank" rel="noopener">Driftstatus</a>
     </footer>
   </main>
 </template>
@@ -41,4 +41,3 @@ const weeks = {
   }
 };
 </script>
-

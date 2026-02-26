@@ -1,24 +1,36 @@
-# Runbook — Deploy on hemma (hule.education)
+---
+type: runbook
+id: RUN-hemma-deploy
+title: Deploy på hemma (hule.education)
+status: active
+created: "2026-02-26"
+updated: "2026-02-26"
+owners:
+  - portal
+system: hemma
+tags:
+  - deploy
+links: []
+---
 
-This runbook mirrors the same operational style used for Skriptoteket/HuleEdu.
+Den här runbooken följer samma operativa stil som Skriptoteket/HuleEdu.
 
-## Prerequisites
+## Förutsättningar
 
-- Docker installed on server
-- External network exists: `hule-network`
-- Reverse-proxy stack is running (nginx-proxy + LetsEncrypt companion)
+- Docker installerat på servern
+- Externt nätverk finns: `hule-network`
+- Reverse-proxy stack kör (nginx-proxy + LetsEncrypt companion)
 
-## Build and start
+## Bygg och starta
 
-On server:
+På servern:
 
-1. Create `.env` from `.env.example.prod`
-2. Build + run:
+1. Skapa `.env` från `.env.example.prod`.
+2. Bygg och starta:
    - `docker compose -f compose.prod.yaml build`
    - `docker compose -f compose.prod.yaml up -d`
 
-## Verify
+## Verifiera
 
-- `GET /healthz` returns 200
-- Front page loads at the configured host
-
+- `GET /healthz` returnerar 200
+- Startsidan laddar på konfigurerad host
