@@ -129,7 +129,10 @@ def validate_location(path: Path, item_type: str) -> list[str]:
         if item_type == "reference" and len(rel.parts) == 1:
             if rel.name != "README.md" and not rel.name.startswith("README-"):
                 errors.append(
-                    f"{repo_relative(path)}: root reference filename should be README.md or README-*.md"
+                    (
+                        f"{repo_relative(path)}: root reference filename should be README.md "
+                        "or README-*.md"
+                    )
                 )
         return errors
 
@@ -244,4 +247,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

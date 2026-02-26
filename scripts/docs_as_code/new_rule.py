@@ -4,7 +4,13 @@ from __future__ import annotations
 
 import argparse
 
-from scripts.docs_as_code.common import RULES_DIR, ensure_parent, next_numeric_prefix, slugify, today_iso
+from scripts.docs_as_code.common import (
+    RULES_DIR,
+    ensure_parent,
+    next_numeric_prefix,
+    slugify,
+    today_iso,
+)
 
 
 def main() -> None:
@@ -54,4 +60,3 @@ TBD.
 
 if __name__ == "__main__":
     main()
-

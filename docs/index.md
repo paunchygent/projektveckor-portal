@@ -22,7 +22,7 @@ Huvudfokus är att göra **FN-rollspelsveckan** (förberedelsevecka + själva FN
 ## Målbild
 
 - **En stabil startpunkt per projektvecka** (länkbar URL) som elever/lärare kan återkomma till.
-- **Allt material på rätt ställe**: portalen länkar vidare till SharePoint/Teams (PDF/DOCX/mappar) med robusta länkar.
+- **Allt material på rätt ställe**: dokument och resurser **hostas på hemmaservern** och kan förhandsvisas direkt i portalen.
 - **Interaktiv resurs** för FN-rollspelet: regler, roller, förhandlingsstöd, mallar (t.ex. resolutioner och policydokument).
 - **Två delar i samma portal**:
   - **Elev-/delegationsdel**: navigation + resurser + “hjälp för att göra rätt”.
@@ -39,15 +39,15 @@ Huvudfokus är att göra **FN-rollspelsveckan** (förberedelsevecka + själva FN
   - Källfiler: `frontend/public/fn-rollspel/v43/portal/`
   - Inbäddning: `frontend/src/pages/FnRollspelV43Page.vue`
 
-Det här upplägget gör att intern navigation (HTML→HTML) fungerar i webbläsaren även när SharePoints förhandsvisning/sandbox blockerar sådan navigation.
+Det här upplägget gör att intern navigation (HTML→HTML) fungerar i webbläsaren även när externa “preview”-miljöer skulle begränsa navigation.
 
-## Innehållspipeline (Docforge → Portal)
+## Innehållspipeline (Docforge → Portal + konvertering)
 
-Docforge är “source of truth” för **varför** HTML-portalen finns och vilka constraints som gäller:
+Docforge är historiskt “source of truth” för **varför** HTML-portalen finns och vilka constraints som identifierades i SharePoint-preview.
 
 - Syfte och constraint (SharePoint vs hostad portal):
   - `docforge/TASKS/content/fn_rollspel/fn-rollspel-v43-ht25-sharepoint-html-portal.md`
-- Överlämningspaket och struktur (SharePoint/Teams som primär leverans):
+- Överlämningspaket och struktur (överlämningens innehåll/ordning):
   - `docforge/TASKS/content/fn_rollspel/fn-rollspel-v43-ht25-overlamning.md`
 
 Praktiskt arbetsflöde:
@@ -55,7 +55,10 @@ Praktiskt arbetsflöde:
 1. Skapa/uppdatera innehåll i Docforge (task + export/HTML vid behov).
 2. Kopiera in statiska HTML-exporter till `frontend/public/<projektvecka>/...` när de ska hostas här.
 3. Exponera dem som stabila SPA-rutter (och/eller iframe-inbäddning) i frontend.
-4. Länka till SharePoint-filer med **absoluta** URL:er (för att vara robust mot klientbeteende).
+4. Hostade dokument ska:
+   - gå att förhandsvisa i portalen, och
+   - kunna konverteras till PDF/DOCX via Sir Convert a Lot (för nedladdning/utskrift).
+   - se integrationsref: `docs/reference/ref-sir-convert-a-lot-integration.md`
 
 ## Deploy
 

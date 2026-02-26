@@ -194,7 +194,12 @@ def validate_doc(path: Path, docs_contract: YamlMapping) -> list[Violation]:
     actual_type = frontmatter.get("type")
     if expected_type is not None:
         if actual_type != expected_type:
-            violations.append(Violation(norm, f"Invalid type '{actual_type}'. Expected: {expected_type}"))
+            violations.append(
+                Violation(
+                    norm,
+                    f"Invalid type '{actual_type}'. Expected: {expected_type}",
+                )
+            )
     elif isinstance(allowed_types, list):
         if actual_type not in allowed_types:
             violations.append(
@@ -210,7 +215,12 @@ def validate_doc(path: Path, docs_contract: YamlMapping) -> list[Violation]:
     allowed_statuses = set(to_str_list(section.get("status_allowed")))
     status = frontmatter.get("status")
     if isinstance(status, str) and allowed_statuses and status not in allowed_statuses:
-        violations.append(Violation(norm, f"Invalid status '{status}'. Allowed: {sorted(allowed_statuses)}"))
+        violations.append(
+            Violation(
+                norm,
+                f"Invalid status '{status}'. Allowed: {sorted(allowed_statuses)}",
+            )
+        )
 
     required_section_keys = set(to_str_list(section.get("required")))
     optional_section_keys = set(to_str_list(section.get("optional")))
@@ -264,7 +274,12 @@ def validate_rule(path: Path, rules_contract: YamlMapping) -> list[Violation]:
     status_allowed = set(to_str_list(rules_contract.get("status_allowed")))
     status = frontmatter.get("status")
     if isinstance(status, str) and status_allowed and status not in status_allowed:
-        violations.append(Violation(norm, f"Invalid status '{status}'. Allowed: {sorted(status_allowed)}"))
+        violations.append(
+            Violation(
+                norm,
+                f"Invalid status '{status}'. Allowed: {sorted(status_allowed)}",
+            )
+        )
 
     rule_id_regex = rules_contract.get("rule_id_regex")
     if isinstance(rule_id_regex, str) and "rule_id" in frontmatter:
@@ -350,4 +365,3 @@ def main(argv: list[str]) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main(sys.argv))
-

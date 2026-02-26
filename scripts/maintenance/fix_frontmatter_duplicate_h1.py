@@ -64,7 +64,12 @@ def main() -> int:
     parser = argparse.ArgumentParser(
         description="Remove duplicate leading H1 when YAML frontmatter contains the same title."
     )
-    parser.add_argument("--root", type=Path, default=Path("."), help="Repo root to scan (default: .)")
+    parser.add_argument(
+        "--root",
+        type=Path,
+        default=Path("."),
+        help="Repo root to scan (default: .)",
+    )
     parser.add_argument("--apply", action="store_true", help="Write changes (default: dry-run).")
     args = parser.parse_args()
 

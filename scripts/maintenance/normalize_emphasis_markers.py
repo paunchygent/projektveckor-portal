@@ -83,7 +83,11 @@ def normalize_text(text: str) -> NormalizeResult:
                 in_fence = True
                 fence_token = token
             else:
-                if fence_token and token.startswith(fence_token[0]) and len(token) >= len(fence_token):
+                if (
+                    fence_token
+                    and token.startswith(fence_token[0])
+                    and len(token) >= len(fence_token)
+                ):
                     in_fence = False
                     fence_token = None
             out_lines.append(raw_line)
@@ -113,7 +117,12 @@ def normalize_text(text: str) -> NormalizeResult:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Normalize emphasis markers to asterisk style.")
-    parser.add_argument("--root", type=Path, default=Path("."), help="Repo root to scan (default: .)")
+    parser.add_argument(
+        "--root",
+        type=Path,
+        default=Path("."),
+        help="Repo root to scan (default: .)",
+    )
     parser.add_argument("--apply", action="store_true", help="Write changes (default: dry-run).")
     args = parser.parse_args()
 

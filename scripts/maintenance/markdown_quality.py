@@ -116,7 +116,10 @@ def main() -> int:
 
     p_check = subparsers.add_parser(
         "check",
-        help="Run prettier --check, frontmatter title/H1 check, emphasis marker check, and markdownlint.",
+        help=(
+            "Run prettier --check, frontmatter title/H1 check, emphasis marker check, "
+            "and markdownlint."
+        ),
     )
     p_check.add_argument("paths", nargs="*", help="Optional file/glob paths to check.")
 

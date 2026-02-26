@@ -1,3 +1,7 @@
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
 [project]
 name = "projektveckor-portal"
 version = "0.1.0"
@@ -12,6 +16,9 @@ dependencies = [
   "uvicorn[standard]",
   "pydantic",
   "pydantic-settings",
+  "pyyaml",
+  "markdown",
+  "httpx",
 ]
 
 [dependency-groups]
@@ -20,7 +27,8 @@ dev = [
   "mypy",
   "pytest",
   "pytest-cov",
-  "pyyaml",
+  "types-PyYAML",
+  "types-Markdown",
 ]
 
 [tool.pdm.scripts]

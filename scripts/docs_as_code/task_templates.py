@@ -54,7 +54,11 @@ TEMPLATES: dict[str, TaskTemplate] = {
             "Done Definition",
             "Checklist",
         ),
-        checklist=("Implementation complete", "Tests and validations complete", "Docs synchronized"),
+        checklist=(
+            "Implementation complete",
+            "Tests and validations complete",
+            "Docs synchronized",
+        ),
         intro="Implementation slice with acceptance-driven scope.",
     ),
     "task": TaskTemplate(
@@ -65,7 +69,14 @@ TEMPLATES: dict[str, TaskTemplate] = {
     ),
     "fix": TaskTemplate(
         status="proposed",
-        sections=("Context", "Objective", "Scope", "Acceptance Criteria", "Validation", "Checklist"),
+        sections=(
+            "Context",
+            "Objective",
+            "Scope",
+            "Acceptance Criteria",
+            "Validation",
+            "Checklist",
+        ),
         checklist=("Root cause documented", "Fix implemented", "Regression checks passed"),
         intro="Focused correction of a known issue.",
     ),
@@ -140,4 +151,3 @@ def filename_prefix_for(task_type: str) -> str:
 
 def invalid_title_prefixes() -> tuple[str, ...]:
     return ("programme ", "program ", "epic ", "story ", "task ", "review ", "fix ")
-

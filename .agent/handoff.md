@@ -17,7 +17,7 @@
 - Frontend: svenskare UI-copy:
   - `healthz`-länk bytt till “Driftstatus”
   - små språkjusteringar (“Portalen”, “portalsida”, etc.)
-- FN-rollspel v43: imported Docforge SharePoint-HTML export into the repo:
+- FN-rollspel v43: imported Docforge HTML export into the repo:
   - Static HTML: `frontend/public/fn-rollspel/v43/portal/`
   - Embedded via iframe in the SPA routes above
 - Docs-as-code: införde styrande dokumentstruktur + validering:
@@ -28,6 +28,15 @@
   - Valideringsscript + scaffolding: `scripts/docs_as_code/`
   - Markdown quality (prettier + markdownlint): `scripts/maintenance/` + repo-root configs
 - Agent/rules: uppdaterade `.agent/rules/*.md` till kontraktsformat (frontmatter + inga H1-rubriker).
+- PDM/TOML: fixade `pyproject.toml` så PDM kan läsa scripts med `:` (citerade nycklar) och tog bort dublett-nyckel som gav `TOMLDecodeError`.
+- Frontend/TS: aktiverade `forceConsistentCasingInFileNames` i `frontend/tsconfig.json`.
+- Backlog: skapade programme→epic→story→task-kedja och backlog-index (`docs/backlog/README-index.md` via `pdm run index-backlog`).
+- Reference: lagt synkplan för hur Skriptoteket + HuleEdu + Docforge används för skills och doc-as-code: `docs/reference/ref-synkplan-skriptoteket-huleedu-docforge.md`.
+- Arkitektur: vände dokumentantagandet till självhostat dokumentbibliotek med preview/redigering i portalen och exports via Sir Convert a Lot (ADR-0002).
+- Backend: införde första doclib-MVP (Markdown→HTML preview + admin write) med självhostad lagring under `PVP_DOCS_ROOT`:
+  - Public preview: `/d/<doc_path>` (HTML)
+  - API: `/api/documents` (list/get), `/api/admin/documents/<doc_path>` (put; teacher-only)
+- Auth: påbörjad integration via HuleEdu Identity introspection (`PVP_IDENTITY_INTROSPECT_URL`) för teacher-only admin (ADR-0003).
 
 ## Decisions
 
@@ -35,17 +44,28 @@
 - Default production hostname remains `projektveckor.hule.education` via nginx-proxy env vars.
 - Portalen använder doc-as-code som normativt arbetssätt (backlog/ADR/PRD/ref + kontraktvalidering).
 - Repo-root PDM-scripts kapslar frontend-kommandon (Skriptoteket-stil): `pdm run frontend:*`.
+- ADR-0002: dokument hostas på hemmaservern och preview/redigering sker i portalen; exports skapas via Sir Convert a Lot.
+- ADR-0003 (proposed): AuthN/AuthZ återanvänds från HuleEdu/Skriptoteket, inte hardcoded i portalen.
+- Docforge (historik): SharePoint-preview begränsade HTML→HTML-navigation; hostad portal var robust fallback (se Docforge task `TASKS/content/fn_rollspel/fn-rollspel-v43-ht25-sharepoint-html-portal.md`).
 
 ## Next steps
 
 - Expand FN-rollspel v43 content with the real “dag-för-dag” + roles once the source doc is ready to copy into portal text.
 - Add next weeks/pages using same routing pattern.
 - Decide if v43 should stay as embedded static HTML export (current) or be converted to native Vue content.
-- Kör lokalt:
-  - `pdm install -G dev` (uppdaterar venv efter nya dev-deps/scriptytor)
+- Implementera dokumentbibliotek-MVP enligt epic/story i `docs/backlog/` (preview/redigering/export).
+- Slutför auth discovery (HuleEdu/Skriptoteket) och acceptera ADR-0003 med exakt modell (JWT/OIDC/gateway).
+- Implementera exportflöde (Sir Convert a Lot v2) + lagring under `PVP_EXPORTS_ROOT`.
+- Kör lokalt (prioriterad ordning):
+  - `pdm lock` + `pdm install`
   - `pdm run validate-docs` + `pdm run validate-backlog`
-  - installera Node/pnpm om det saknas och kör `pdm run frontend:install`
+  - installera Node + pnpm om det saknas och kör `pdm run frontend:install`
+  - `pdm run frontend:typecheck`
   - `pdm run check:md` (kräver Node/npx)
+- Skapa nya PR-slice tasks för:
+  - port av HuleEdu “guards” (länk-integritet, allowlist, legacy-token guard, rule-surface authority),
+  - ev. pre-commit gate (Skriptoteket-mönster),
+  - skapande av Codex-skills enligt synkplanen.
 
 ## Links / references
 
@@ -54,3 +74,4 @@
 - Docforge export source (local path on dev machine): `docforge/local_exports/..._html_portal/`
 - Docs entrypoint: `docs/index.md`
 - Docs structure spec: `docs/docs-structure-spec.md`
+- Synkplan (skills + guards): `docs/reference/ref-synkplan-skriptoteket-huleedu-docforge.md`

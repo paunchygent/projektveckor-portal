@@ -22,3 +22,4 @@ Backloggen är repo:ts styrande “varför och vad vi gör”-yta.
 - `docs/backlog/tasks/`: PR-stora uppgifter (eller fixar).
 - `docs/backlog/reviews/`: strukturerade reviews med beslut och uppföljning.
 - `docs/backlog/current.md`: löpande arbetslogg (komprimeras).
+- `docs/backlog/README-index.md`: autogenererad index av backlog-dokument (kör `pdm run index-backlog`).

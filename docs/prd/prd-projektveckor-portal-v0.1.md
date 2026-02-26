@@ -27,7 +27,9 @@ Hulebäcksgymnasiet genomför återkommande projektveckor. För att minska frikt
 
 - Hostad portal på `hule.education`.
 - FN-rollspel v.43 (HT25) som första “week page”.
-- Länkar till SharePoint/Teams-resurser (absoluta länkar).
+- Dokument och resurser hostas på hemmaservern och kan förhandsvisas i portalen.
+- Konvertering till nedladdningsbara filer (PDF/DOCX) via Sir Convert a Lot.
+- Autentisering/auktorisering för lärarytan återanvänds från HuleEdu/Skriptoteket (ADR-0003).
 
 ## Out of scope (v0.1)
 
@@ -36,5 +38,5 @@ Hulebäcksgymnasiet genomför återkommande projektveckor. För att minska frikt
 
 ## Krav (hög nivå)
 
-- Navigering ska fungera oberoende av SharePoints HTML-preview-begränsningar.
+- Navigering och preview ska fungera i vanliga webbläsare (utan externa “preview”-sandboxes).
 - Backend ska vara tunn och följa DDD/Clean Architecture (DIP, DI, SRP).

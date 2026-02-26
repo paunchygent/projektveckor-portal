@@ -1,6 +1,6 @@
 # Projektveckor Portal
 
-Portal för projektveckor (t.ex. FN-rollspel v.43) som hostas på `hule.education` och länkar vidare till SharePoint-resurser.
+Portal för projektveckor (t.ex. FN-rollspel v.43) som hostas på `hule.education` och **hostar dokumenten själv** (förhandsvisning i webben + konvertering till PDF/DOCX via Sir Convert a Lot).
 
 ## Snabbstart (dev)
 

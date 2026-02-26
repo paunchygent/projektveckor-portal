@@ -7,12 +7,11 @@ docs/backlog validator conventions (frontmatter + no H1 headings).
 from __future__ import annotations
 
 import argparse
-from datetime import date
 import re
+from datetime import date
 from pathlib import Path
 
 import yaml
-
 
 FRONTMATTER_RE = re.compile(r"\A---\s*\n(.*?)\n---\s*\n", re.DOTALL)
 
@@ -28,7 +27,10 @@ def parse_frontmatter(text: str) -> dict[str, object]:
 
 
 def repo_relative(root: Path, path: Path) -> str:
-    return str(path.relative_to(root)).replace("\\", "/")
+    try:
+        return str(path.resolve().relative_to(root.resolve())).replace("\\", "/")
+    except ValueError:
+        return str(path).replace("\\", "/")
 
 
 def dump_frontmatter(frontmatter: dict[str, object]) -> str:
@@ -161,7 +163,7 @@ def main() -> None:
     report = [
         dump_frontmatter(frontmatter).rstrip("\n"),
         "",
-        "## Syfte",
+        "## Purpose",
         "",
         "En autogenererad översikt över planeringsdokument i `docs/backlog/`.",
         "",
