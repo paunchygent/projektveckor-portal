@@ -1,18 +1,18 @@
 ---
-id: 'epic-doc-guards-and-precommit'
-title: 'Doc-as-code: guards + pre-commit quality gate'
-type: 'epic'
-status: 'proposed'
-priority: 'medium'
-created: '2026-02-26'
-last_updated: '2026-02-26'
+id: "epic-doc-guards-and-precommit"
+title: "Doc-as-code: guards + pre-commit quality gate"
+type: "epic"
+status: "proposed"
+priority: "medium"
+created: "2026-02-26"
+last_updated: "2026-02-26"
 related:
-  - 'docs/backlog/programmes/programme-projektveckor-portal-v0-1.md'
-  - 'docs/backlog/epics/epic-doc-as-code-governance.md'
-  - 'docs/prd/prd-projektveckor-portal-v0.1.md'
+  - "docs/backlog/programmes/programme-projektveckor-portal-v0-1.md"
+  - "docs/backlog/epics/epic-doc-as-code-governance.md"
+  - "docs/prd/prd-projektveckor-portal-v0.1.md"
 labels:
-  - 'docs-as-code'
-  - 'quality'
+  - "docs-as-code"
+  - "quality"
 ---
 
 Major capability increment managed through linked stories.
@@ -46,4 +46,3 @@ Höja robustheten i doc-as-code-flödet genom att porta in beprövade “guards�
 - [ ] Stories linked
 - [ ] Acceptance criteria defined
 - [ ] Execution gate defined
-

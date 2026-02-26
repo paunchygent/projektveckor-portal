@@ -1,16 +1,16 @@
 ---
-id: 'task-09-backend-doc-preview-api'
-title: 'Backend: API för dokument-preview (read) + update (admin)'
-type: 'task'
-status: 'proposed'
-priority: 'high'
-created: '2026-02-26'
-last_updated: '2026-02-26'
+id: "task-09-backend-doc-preview-api"
+title: "Backend: API för dokument-preview (read) + update (admin)"
+type: "task"
+status: "proposed"
+priority: "high"
+created: "2026-02-26"
+last_updated: "2026-02-26"
 related:
-  - 'docs/backlog/stories/story-doc-library-preview-edit-convert.md'
+  - "docs/backlog/stories/story-doc-library-preview-edit-convert.md"
 labels:
-  - 'backend'
-  - 'docs'
+  - "backend"
+  - "docs"
 ---
 
 PR-sized execution unit; may be linked to a story or standalone.

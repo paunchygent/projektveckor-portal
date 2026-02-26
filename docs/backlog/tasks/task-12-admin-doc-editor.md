@@ -1,16 +1,16 @@
 ---
-id: 'task-12-admin-doc-editor'
-title: 'Frontend: admin-redigerare för dokument (MVP)'
-type: 'task'
-status: 'proposed'
-priority: 'medium'
-created: '2026-02-26'
-last_updated: '2026-02-26'
+id: "task-12-admin-doc-editor"
+title: "Frontend: admin-redigerare för dokument (MVP)"
+type: "task"
+status: "proposed"
+priority: "medium"
+created: "2026-02-26"
+last_updated: "2026-02-26"
 related:
-  - 'docs/backlog/stories/story-doc-library-preview-edit-convert.md'
+  - "docs/backlog/stories/story-doc-library-preview-edit-convert.md"
 labels:
-  - 'frontend'
-  - 'admin'
+  - "frontend"
+  - "admin"
 ---
 
 PR-sized execution unit; may be linked to a story or standalone.

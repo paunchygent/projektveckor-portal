@@ -12,6 +12,7 @@ Use this file as the starting point when you begin a new session.
 ## What this repo is
 
 Projektveckor Portal is a small teacher-first portal for publishing project-week “entrypoints” as a web page:
+
 - hosted on `hule.education`,
 - hosting project-week documents on the home server (preview in the web UI + exports to PDF/DOCX via Sir Convert a Lot),
 - with a consistent look and easy navigation.

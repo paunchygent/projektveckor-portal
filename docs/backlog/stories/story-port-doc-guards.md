@@ -1,16 +1,16 @@
 ---
-id: 'story-port-doc-guards'
-title: 'Porta HuleEdu guards + pre-commit gate (docs/backlog)'
-type: 'story'
-status: 'proposed'
-priority: 'medium'
-created: '2026-02-26'
-last_updated: '2026-02-26'
+id: "story-port-doc-guards"
+title: "Porta HuleEdu guards + pre-commit gate (docs/backlog)"
+type: "story"
+status: "proposed"
+priority: "medium"
+created: "2026-02-26"
+last_updated: "2026-02-26"
 related:
-  - 'docs/backlog/epics/epic-doc-guards-and-precommit.md'
+  - "docs/backlog/epics/epic-doc-guards-and-precommit.md"
 labels:
-  - 'docs-as-code'
-  - 'quality'
+  - "docs-as-code"
+  - "quality"
 ---
 
 Implementation slice with acceptance-driven scope.
@@ -47,4 +47,3 @@ Införa extra validering (“guards”) och ett lokalt kvalitetsstopp så att do
 - [ ] Implementation complete
 - [ ] Tests and validations complete
 - [ ] Docs synchronized
-

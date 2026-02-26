@@ -19,7 +19,7 @@ links:
 
 Tidigare har upplägget utgått från att portalen “länkar vidare” till dokument i SharePoint/Teams. Det skapar beroenden på externa preview-miljöer, inloggningar och constraints som vi inte styr.
 
-Projektets målbild kräver att elever/delegationer hittar *allt* via portalen och att lärare kan uppdatera materialet direkt i portalen under projektveckan.
+Projektets målbild kräver att elever/delegationer hittar _allt_ via portalen och att lärare kan uppdatera materialet direkt i portalen under projektveckan.
 
 ## Beslut
 
@@ -41,4 +41,3 @@ Projektets målbild kräver att elever/delegationer hittar *allt* via portalen o
 
 - Fortsätta med SharePoint/Teams som primär yta: för hög friktion och begränsad kontroll (preview/sandbox/inloggning).
 - “Bara hosta statisk HTML”: fungerar för vissa fall, men saknar redigering + exports och blir svårt att förvalta långsiktigt.
-

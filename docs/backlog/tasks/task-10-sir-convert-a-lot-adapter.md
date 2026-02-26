@@ -1,17 +1,17 @@
 ---
-id: 'task-10-sir-convert-a-lot-adapter'
-title: 'Backend: adapter mot Sir Convert a Lot (export PDF/DOCX)'
-type: 'task'
-status: 'proposed'
-priority: 'high'
-created: '2026-02-26'
-last_updated: '2026-02-26'
+id: "task-10-sir-convert-a-lot-adapter"
+title: "Backend: adapter mot Sir Convert a Lot (export PDF/DOCX)"
+type: "task"
+status: "proposed"
+priority: "high"
+created: "2026-02-26"
+last_updated: "2026-02-26"
 related:
-  - 'docs/backlog/stories/story-doc-library-preview-edit-convert.md'
-  - 'docs/decisions/0002-self-hosted-documents-and-conversion.md'
+  - "docs/backlog/stories/story-doc-library-preview-edit-convert.md"
+  - "docs/decisions/0002-self-hosted-documents-and-conversion.md"
 labels:
-  - 'backend'
-  - 'conversion'
+  - "backend"
+  - "conversion"
 ---
 
 PR-sized execution unit; may be linked to a story or standalone.
@@ -39,4 +39,3 @@ Koppla portalen till Sir Convert a Lot så att ett dokument kan exporteras till 
 - [ ] Implementation complete
 - [ ] Validation complete
 - [ ] Docs updated
-

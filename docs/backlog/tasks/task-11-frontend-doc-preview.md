@@ -1,16 +1,16 @@
 ---
-id: 'task-11-frontend-doc-preview'
-title: 'Frontend: komponent för dokument-preview (Markdown/PDF/HTML)'
-type: 'task'
-status: 'proposed'
-priority: 'medium'
-created: '2026-02-26'
-last_updated: '2026-02-26'
+id: "task-11-frontend-doc-preview"
+title: "Frontend: komponent för dokument-preview (Markdown/PDF/HTML)"
+type: "task"
+status: "proposed"
+priority: "medium"
+created: "2026-02-26"
+last_updated: "2026-02-26"
 related:
-  - 'docs/backlog/stories/story-doc-library-preview-edit-convert.md'
+  - "docs/backlog/stories/story-doc-library-preview-edit-convert.md"
 labels:
-  - 'frontend'
-  - 'docs'
+  - "frontend"
+  - "docs"
 ---
 
 PR-sized execution unit; may be linked to a story or standalone.
@@ -37,4 +37,3 @@ Visa dokument på ett enhetligt sätt i portalen, oavsett om källan är Markdow
 - [ ] Implementation complete
 - [ ] Validation complete
 - [ ] Docs updated
-

@@ -13,4 +13,3 @@ This folder holds **repo-local skills** that override/extend global Codex skills
 - `projektveckor-docs-as-code/`
 - `projektveckor-hemma-deploy/`
 - `projektveckor-portal-week-entry/`
-

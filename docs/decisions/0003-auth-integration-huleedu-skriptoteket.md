@@ -2,7 +2,7 @@
 type: decision
 id: ADR-0003
 title: "Autentisering/auktorisering återanvänds från HuleEdu/Skriptoteket"
-status: proposed
+status: accepted
 created: "2026-02-26"
 updated: "2026-02-26"
 owners:
@@ -23,20 +23,32 @@ Samtidigt ska elev-/delegationsinnehåll vara öppet och navigerbart utan inlogg
 
 ## Beslut (förslag)
 
-- `projektveckor-portal` ska använda samma AuthN/AuthZ-mekanism som HuleEdu/Skriptoteket.
-- Portalen ska modellera auth som en **port** (abstraktion) i application-lagret och en **adapter** i infrastructure-lagret.
-- Publica rutter och dokument är öppna; lärarinstruktioner och admin-rutter kräver giltig auth + rätt roll.
+`projektveckor-portal` återanvänder HuleEdu/Skriptoteket och implementerar inga “egna användare”.
+
+### Kort sikt (MVP)
+
+- Portalen har en egen `/login`-vy (frontend) som anropar portalens API.
+- Portalen fungerar som en **tunn proxy** mot HuleEdu Identity:
+  - `POST /api/v1/auth/login` → vidarebefordrar login till HuleEdu Identity och **sätter httpOnly-cookies** för sessionen.
+  - `GET /api/v1/auth/me` → validerar session (via HuleEdu Identity introspection/refresh vid behov) och returnerar rollinformation.
+- CSRF-skydd körs på **skrivande requests** (POST/PUT/PATCH/DELETE) via headern `X-CSRF-Token`.
+- Roller normaliseras till den minsta mängd vi behöver i portalen:
+  - `student` (ej admin-yta)
+  - `teacher` (får redigera/exports/bulletin)
+  - `admin` (framtida “no-code”/konfiguration som vi inte vill bygga in i teacher-rollen)
+- Allt elev-/delegationsinnehåll är öppet; admin-yta och lärardokument kräver inloggning.
+
+### Lång sikt
+
+- Inloggning sker i en gemensam plats (HuleEdu/Skriptoteket) och portalen **konsumerar redan satta cookies**.
+- Portalen ska kunna köras bakom en gateway som centraliserar auth och minskar behovet av introspection per request.
 
 ## Öppna frågor
 
-- Exakt integrationsform:
-  - OIDC/JWT-verifiering lokalt i portalen, eller
-  - “auth gateway”/introspektion mot HuleEdu, eller
-  - reverse-proxy auth (t.ex. headers från gateway).
-- Rollmodell: minsta roller vi behöver (t.ex. `teacher`, `admin`).
+- Exakt gateway-modell på sikt (header-baserad auth vs fortsatta cookies).
+- Hur vi vill exponera “login entrypoint” när portal + HuleEdu körs på olika subdomäner.
 
 ## Konsekvenser
 
 - Vi behöver inventera hur auth görs i HuleEdu/Skriptoteket och återanvända kod/kontrakt.
 - Vi behöver tydliga regler för “public vs teacher-only” på dokumentnivå.
-

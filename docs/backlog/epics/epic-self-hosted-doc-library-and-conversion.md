@@ -1,18 +1,18 @@
 ---
-id: 'epic-self-hosted-doc-library-and-conversion'
-title: 'Självhostat dokumentbibliotek + preview/redigering + konvertering'
-type: 'epic'
-status: 'proposed'
-priority: 'high'
-created: '2026-02-26'
-last_updated: '2026-02-26'
+id: "epic-self-hosted-doc-library-and-conversion"
+title: "Självhostat dokumentbibliotek + preview/redigering + konvertering"
+type: "epic"
+status: "proposed"
+priority: "high"
+created: "2026-02-26"
+last_updated: "2026-02-26"
 related:
-  - 'docs/backlog/programmes/programme-projektveckor-portal-v0-1.md'
-  - 'docs/prd/prd-projektveckor-portal-v0.1.md'
-  - 'docs/decisions/0002-self-hosted-documents-and-conversion.md'
+  - "docs/backlog/programmes/programme-projektveckor-portal-v0-1.md"
+  - "docs/prd/prd-projektveckor-portal-v0.1.md"
+  - "docs/decisions/0002-self-hosted-documents-and-conversion.md"
 labels:
-  - 'docs'
-  - 'conversion'
+  - "docs"
+  - "conversion"
 ---
 
 Major capability increment managed through linked stories.
@@ -20,6 +20,7 @@ Major capability increment managed through linked stories.
 ## Goal
 
 Alla dokument och resurser som portalen använder ska kunna:
+
 - hostas på hemmaservern,
 - förhandsvisas i webben (som HTML),
 - redigeras i lärarytan,

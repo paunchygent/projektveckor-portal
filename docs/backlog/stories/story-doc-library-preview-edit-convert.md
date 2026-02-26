@@ -1,16 +1,16 @@
 ---
-id: 'story-doc-library-preview-edit-convert'
-title: 'Dokumentbibliotek MVP: preview + redigering + export (Sir Convert a Lot)'
-type: 'story'
-status: 'proposed'
-priority: 'high'
-created: '2026-02-26'
-last_updated: '2026-02-26'
+id: "story-doc-library-preview-edit-convert"
+title: "Dokumentbibliotek MVP: preview + redigering + export (Sir Convert a Lot)"
+type: "story"
+status: "proposed"
+priority: "high"
+created: "2026-02-26"
+last_updated: "2026-02-26"
 related:
-  - 'docs/backlog/epics/epic-self-hosted-doc-library-and-conversion.md'
+  - "docs/backlog/epics/epic-self-hosted-doc-library-and-conversion.md"
 labels:
-  - 'docs'
-  - 'conversion'
+  - "docs"
+  - "conversion"
 ---
 
 Implementation slice with acceptance-driven scope.
@@ -18,7 +18,8 @@ Implementation slice with acceptance-driven scope.
 ## Objective
 
 Leverera en första fungerande kedja för “dokument i portalen”:
-1) lagras på servern, 2) previewas i elevytan, 3) kan redigeras av lärare, 4) exporteras till PDF/DOCX via Sir Convert a Lot.
+
+1. lagras på servern, 2) previewas i elevytan, 3) kan redigeras av lärare, 4) exporteras till PDF/DOCX via Sir Convert a Lot.
 
 ## Scope
 

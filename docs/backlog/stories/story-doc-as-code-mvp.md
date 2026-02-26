@@ -1,16 +1,16 @@
 ---
-id: 'story-doc-as-code-mvp'
-title: 'Doc-as-code MVP: kontrakt, backlogkedja och root-kommandon'
-type: 'story'
-status: 'in_progress'
-priority: 'high'
-created: '2026-02-26'
-last_updated: '2026-02-26'
+id: "story-doc-as-code-mvp"
+title: "Doc-as-code MVP: kontrakt, backlogkedja och root-kommandon"
+type: "story"
+status: "in_progress"
+priority: "high"
+created: "2026-02-26"
+last_updated: "2026-02-26"
 related:
-  - 'docs/backlog/epics/epic-doc-as-code-governance.md'
-  - 'docs/prd/prd-projektveckor-portal-v0.1.md'
+  - "docs/backlog/epics/epic-doc-as-code-governance.md"
+  - "docs/prd/prd-projektveckor-portal-v0.1.md"
 labels:
-  - 'docs-as-code'
+  - "docs-as-code"
 ---
 
 Implementation slice with acceptance-driven scope.
@@ -48,4 +48,3 @@ Göra doc-as-code-systemet i `projektveckor-portal` användbart i vardagen: tydl
 - [ ] Implementation complete
 - [ ] Tests and validations complete
 - [ ] Docs synchronized
-

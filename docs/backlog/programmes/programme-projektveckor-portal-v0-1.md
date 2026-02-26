@@ -1,16 +1,16 @@
 ---
-id: 'programme-projektveckor-portal-v0-1'
-title: 'Projektveckor Portal v0.1'
-type: 'programme'
-status: 'in_progress'
-priority: 'critical'
-created: '2026-02-26'
-last_updated: '2026-02-26'
+id: "programme-projektveckor-portal-v0-1"
+title: "Projektveckor Portal v0.1"
+type: "programme"
+status: "in_progress"
+priority: "critical"
+created: "2026-02-26"
+last_updated: "2026-02-26"
 related:
-  - 'docs/prd/prd-projektveckor-portal-v0.1.md'
+  - "docs/prd/prd-projektveckor-portal-v0.1.md"
 labels:
-  - 'programme'
-  - 'portal'
+  - "programme"
+  - "portal"
 ---
 
 Cross-cutting programme scope and governance are defined here.

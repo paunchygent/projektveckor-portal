@@ -1,16 +1,16 @@
 ---
-id: 'task-08-doc-library-url-and-storage'
-title: 'Definiera dokumentbibliotek: URL-schema, lagring och metadata'
-type: 'task'
-status: 'proposed'
-priority: 'high'
-created: '2026-02-26'
-last_updated: '2026-02-26'
+id: "task-08-doc-library-url-and-storage"
+title: "Definiera dokumentbibliotek: URL-schema, lagring och metadata"
+type: "task"
+status: "proposed"
+priority: "high"
+created: "2026-02-26"
+last_updated: "2026-02-26"
 related:
-  - 'docs/backlog/stories/story-doc-library-preview-edit-convert.md'
-  - 'docs/decisions/0002-self-hosted-documents-and-conversion.md'
+  - "docs/backlog/stories/story-doc-library-preview-edit-convert.md"
+  - "docs/decisions/0002-self-hosted-documents-and-conversion.md"
 labels:
-  - 'docs'
+  - "docs"
 ---
 
 PR-sized execution unit; may be linked to a story or standalone.
@@ -37,4 +37,3 @@ Sätta en stabil grund för dokument i portalen: hur de adresseras (URL), var de
 - [ ] Implementation complete
 - [ ] Validation complete
 - [ ] Docs updated
-

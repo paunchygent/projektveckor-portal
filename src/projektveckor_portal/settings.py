@@ -15,10 +15,20 @@ class Settings(BaseSettings):
     docs_root: Path = Path("data/doclib")
     exports_root: Path = Path("data/exports")
 
+    # Identity (HuleEdu)
+    identity_base_url: str | None = None
     identity_introspect_url: str | None = None
 
     sir_convert_a_lot_base_url: str | None = None
     sir_convert_a_lot_api_key: str | None = None
+
+    # Auth cookies (portal-owned, short-term BFF)
+    auth_access_cookie_name: str = "pvp_access_token"
+    auth_refresh_cookie_name: str = "pvp_refresh_token"
+    csrf_cookie_name: str = "pvp_csrf_token"
+
+    cookie_secure: bool = False
+    cookie_samesite: str = "lax"
 
 
 settings = Settings()

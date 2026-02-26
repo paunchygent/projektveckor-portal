@@ -1,16 +1,16 @@
 ---
-id: 'task-05-doc-guard-link-integrity'
-title: 'Docs guard: länk-integritet och tomma länkar'
-type: 'task'
-status: 'proposed'
-priority: 'medium'
-created: '2026-02-26'
-last_updated: '2026-02-26'
+id: "task-05-doc-guard-link-integrity"
+title: "Docs guard: länk-integritet och tomma länkar"
+type: "task"
+status: "proposed"
+priority: "medium"
+created: "2026-02-26"
+last_updated: "2026-02-26"
 related:
-  - 'docs/backlog/stories/story-port-doc-guards.md'
+  - "docs/backlog/stories/story-port-doc-guards.md"
 labels:
-  - 'docs-as-code'
-  - 'validation'
+  - "docs-as-code"
+  - "validation"
 ---
 
 PR-sized execution unit; may be linked to a story or standalone.
@@ -37,4 +37,3 @@ Fånga trasiga länkar och tomma markdown-länkar i `docs/` och `docs/backlog/` 
 - [ ] Implementation complete
 - [ ] Validation complete
 - [ ] Docs updated
-

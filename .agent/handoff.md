@@ -37,6 +37,11 @@
   - Public preview: `/d/<doc_path>` (HTML)
   - API: `/api/documents` (list/get), `/api/admin/documents/<doc_path>` (put; teacher-only)
 - Auth: påbörjad integration via HuleEdu Identity introspection (`PVP_IDENTITY_INTROSPECT_URL`) för teacher-only admin (ADR-0003).
+- Tooling: fixade PEP517-build backend (`pdm-backend`) och ignorerar `*.egg-info/` (rensade `src/projektveckor_portal.egg-info`).
+- Frontend deps: installerade via pnpm och verifierade `frontend:typecheck` + `frontend:build` från repo-root.
+- Doclib smoke test: seedade exempel-dokument under `data/doclib/fn-rollspel/v43/borja-har/` och verifierade:
+  - listning: `GET /api/documents?prefix=fn-rollspel/v43`
+  - preview: `GET /d/fn-rollspel/v43/borja-har` (Markdown → HTML)
 
 ## Decisions
 
@@ -56,6 +61,7 @@
 - Implementera dokumentbibliotek-MVP enligt epic/story i `docs/backlog/` (preview/redigering/export).
 - Slutför auth discovery (HuleEdu/Skriptoteket) och acceptera ADR-0003 med exakt modell (JWT/OIDC/gateway).
 - Implementera exportflöde (Sir Convert a Lot v2) + lagring under `PVP_EXPORTS_ROOT`.
+- Om `node`/`pnpm` inte hittas i PATH på devmaskinen: lägg till `C:\Program Files\nodejs\` och `%APPDATA%\npm\` i PATH (krävs för `pdm run frontend:*`).
 - Kör lokalt (prioriterad ordning):
   - `pdm lock` + `pdm install`
   - `pdm run validate-docs` + `pdm run validate-backlog`

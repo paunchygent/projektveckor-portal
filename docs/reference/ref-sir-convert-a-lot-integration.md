@@ -77,6 +77,7 @@ Minsta praktiska mappning för portalen:
 Portalen ska ha en port (abstraktion) som inte är bunden till HTTP/CLI.
 
 Mål:
+
 - En enda canonical mapping från “portal-dokument” → `JobSpec`.
 - Deterministiska headers (correlation + idempotency) enligt upstream-kontrakt.
 

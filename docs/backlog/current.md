@@ -23,9 +23,13 @@ labels: []
 - 2026-02-26: Lagt synkplan/ref för Skriptoteket + HuleEdu + Docforge (skills + guards).
 - 2026-02-26: Vände hosting-modellen: dokument ska hostas på hemmaservern med preview/redigering i portalen + export via Sir Convert a Lot (ADR-0002). Sanerade SharePoint-copy i frontend och styrdokument.
 - 2026-02-26: Implementerat första doclib-MVP i backend: självhostad lagring + Markdown→HTML preview (`/d/...`) och admin write via API med Identity introspection (Auth).
+- 2026-02-26: Tooling: lade till PEP517-build backend (`pdm-backend`) och ignorerar `*.egg-info/` (rensade `src/projektveckor_portal.egg-info`).
+- 2026-02-26: Frontend: installerade pnpm-deps och verifierade `frontend:typecheck` + `frontend:build`.
+- 2026-02-26: Doclib: seedade exempel-dokument under `data/doclib/fn-rollspel/v43/borja-har/` och verifierade listning + preview.
+- 2026-02-26: Markdown quality: fixade `check:md`-körning på Windows och exkluderade `.tools/` från markdownlint.
 
 ## Next Actions
 
 1. Ta fram konkret integrationsbrief för Sir Convert a Lot (API/CLI, jobmodell, format) och skapa adapter-kontrakt i `docs/reference/`.
-2. Implementera första slice för dokumentbiblioteket (task-08/09/10) med minimal preview + export.
-3. Kör `pdm run check:md` efter att Node/npx är installerat.
+2. Implementera första slice för exportflödet (task-10 + API-route) och lagring under `PVP_EXPORTS_ROOT`.
+3. Slutför auth discovery och acceptera ADR-0003 (exakt modell för JWT/OIDC/introspection + roller).

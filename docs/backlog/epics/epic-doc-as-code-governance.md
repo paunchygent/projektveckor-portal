@@ -1,17 +1,17 @@
 ---
-id: 'epic-doc-as-code-governance'
-title: 'Doc-as-code governance (backlog/ADR/PRD/ref) + validering'
-type: 'epic'
-status: 'in_progress'
-priority: 'high'
-created: '2026-02-26'
-last_updated: '2026-02-26'
+id: "epic-doc-as-code-governance"
+title: "Doc-as-code governance (backlog/ADR/PRD/ref) + validering"
+type: "epic"
+status: "in_progress"
+priority: "high"
+created: "2026-02-26"
+last_updated: "2026-02-26"
 related:
-  - 'docs/backlog/programmes/programme-projektveckor-portal-v0-1.md'
-  - 'docs/prd/prd-projektveckor-portal-v0.1.md'
+  - "docs/backlog/programmes/programme-projektveckor-portal-v0-1.md"
+  - "docs/prd/prd-projektveckor-portal-v0.1.md"
 labels:
-  - 'docs-as-code'
-  - 'governance'
+  - "docs-as-code"
+  - "governance"
 ---
 
 Major capability increment managed through linked stories.
@@ -19,11 +19,12 @@ Major capability increment managed through linked stories.
 ## Goal
 
 Införa ett robust, kontraktsdrivet doc-as-code system som stödjer:
+
 - backlog och planning artifacts,
 - decisions/ADR,
 - PRD,
 - references/runbooks/templates,
-med validering och repeterbara root-kommandon.
+  med validering och repeterbara root-kommandon.
 
 ## In Scope
 

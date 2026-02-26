@@ -1,17 +1,18 @@
 ---
-id: 'epic-auth-integration'
-title: 'Auth-integration: återanvänd HuleEdu/Skriptoteket för lärarytan'
-type: 'epic'
-status: 'proposed'
-priority: 'high'
-created: '2026-02-26'
-last_updated: '2026-02-26'
+id: "epic-auth-integration"
+title: "Auth-integration: återanvänd HuleEdu/Skriptoteket för lärarytan"
+type: "epic"
+status: "proposed"
+priority: "high"
+created: "2026-02-26"
+last_updated: "2026-02-26"
 related:
-  - 'docs/backlog/programmes/programme-projektveckor-portal-v0-1.md'
-  - 'docs/decisions/0003-auth-integration-huleedu-skriptoteket.md'
+  - "docs/backlog/programmes/programme-projektveckor-portal-v0-1.md"
+  - "docs/decisions/0003-auth-integration-huleedu-skriptoteket.md"
 labels:
-  - 'auth'
+  - "auth"
 ---
+
 Major capability increment managed through linked stories.
 
 ## Goal

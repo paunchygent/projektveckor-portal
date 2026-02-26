@@ -18,4 +18,3 @@ Weeks are hardcoded in `frontend/src/App.vue`.
 ## Next refactor (when needed)
 
 Move week data to a JSON file (checked in) and render entries dynamically.
-

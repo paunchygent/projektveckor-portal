@@ -32,8 +32,10 @@ dev = [
 ]
 
 [tool.pdm.scripts]
-dev = "uvicorn projektveckor_portal.app:app --host 0.0.0.0 --port 8000 --reload"
-serve = "uvicorn projektveckor_portal.app:app --host 0.0.0.0 --port 8000"
+dev = "uvicorn projektveckor_portal.app:app --host 127.0.0.1 --port 8000 --reload"
+"dev:lan" = "uvicorn projektveckor_portal.app:app --host 0.0.0.0 --port 8000 --reload"
+serve = "uvicorn projektveckor_portal.app:app --host 127.0.0.1 --port 8000"
+"serve:lan" = "uvicorn projektveckor_portal.app:app --host 0.0.0.0 --port 8000"
 lint = "ruff check ."
 format = "ruff format ."
 typecheck = "mypy ."
@@ -62,8 +64,10 @@ new-rule = "python -m scripts.docs_as_code.new_rule"
 # Frontend (run from repo root; Skriptoteket-style)
 "frontend:install" = "pnpm -C frontend install"
 "frontend:dev" = "pnpm -C frontend dev"
+"frontend:dev:lan" = "pnpm -C frontend dev:lan"
 "frontend:build" = "pnpm -C frontend build"
 "frontend:preview" = "pnpm -C frontend preview"
+"frontend:preview:lan" = "pnpm -C frontend preview:lan"
 "frontend:typecheck" = "pnpm -C frontend typecheck"
 
 [tool.ruff]

@@ -19,4 +19,3 @@ Use this skill when deploying the portal to the home server.
 
 - Uses shared external network `hule-network`.
 - Host routing uses nginx-proxy environment variables: `VIRTUAL_HOST`, `LETSENCRYPT_HOST`.
-

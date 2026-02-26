@@ -23,7 +23,7 @@ Införa ett tydligt doc-as-code-system i `projektveckor-portal` (struktur + mall
 
 ## PR Scope
 
-- Skapa docs-taxonomi: backlog, decisions (ADR), reference, prd, runbooks, _meta.
+- Skapa docs-taxonomi: backlog, decisions (ADR), reference, prd, runbooks, \_meta.
 - Porta valideringsscript och koppla in PDM-kommandon.
 - Porta markdown formatter/lint (prettier + markdownlint) från Docforge.
 - Uppdatera `AGENTS.md` så att arkitekturprinciper och doc-as-code är normativt.
@@ -49,4 +49,3 @@ Införa ett tydligt doc-as-code-system i `projektveckor-portal` (struktur + mall
 - [ ] Implementation complete
 - [ ] Validation complete
 - [ ] Docs updated
-

@@ -1,17 +1,17 @@
 ---
-id: 'epic-fn-rollspel-v43-portal-mvp'
-title: 'FN-rollspel v.43 — portal MVP (överlämning + navigation)'
-type: 'epic'
-status: 'in_progress'
-priority: 'high'
-created: '2026-02-26'
-last_updated: '2026-02-26'
+id: "epic-fn-rollspel-v43-portal-mvp"
+title: "FN-rollspel v.43 — portal MVP (överlämning + navigation)"
+type: "epic"
+status: "in_progress"
+priority: "high"
+created: "2026-02-26"
+last_updated: "2026-02-26"
 related:
-  - 'docs/backlog/programmes/programme-projektveckor-portal-v0-1.md'
-  - 'docs/prd/prd-projektveckor-portal-v0.1.md'
+  - "docs/backlog/programmes/programme-projektveckor-portal-v0-1.md"
+  - "docs/prd/prd-projektveckor-portal-v0.1.md"
 labels:
-  - 'fn-rollspel'
-  - 'content'
+  - "fn-rollspel"
+  - "content"
 ---
 
 Major capability increment managed through linked stories.

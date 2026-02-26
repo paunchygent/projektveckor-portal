@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 import shutil
 import subprocess
 import sys
@@ -23,6 +24,10 @@ def _has_cmd_exe() -> bool:
     return shutil.which("cmd.exe") is not None
 
 
+def _cmd_exe() -> str:
+    return os.environ.get("COMSPEC") or "cmd.exe"
+
+
 def _run_local(argv: list[str]) -> int:
     proc = subprocess.run(argv, cwd=_repo_root())
     return proc.returncode
@@ -30,12 +35,14 @@ def _run_local(argv: list[str]) -> int:
 
 def _run_windows_cmd(argv: list[str]) -> int:
     cmdline = subprocess.list2cmdline(argv)
-    proc = subprocess.run(["cmd.exe", "/c", cmdline], cwd=_repo_root())
+    proc = subprocess.run([_cmd_exe(), "/c", cmdline], cwd=_repo_root())
     return proc.returncode
 
 
 def _run_npx(args: list[str]) -> int:
     argv = ["npx", "--yes", *args]
+    if sys.platform == "win32":
+        return _run_windows_cmd(argv)
     if _has_local_npx():
         return _run_local(argv)
     if _has_cmd_exe():
@@ -65,6 +72,7 @@ def _run_prettier(*, write: bool, paths: list[str]) -> int:
         ".prettierrc.json",
         "--log-level",
         "warn",
+        "--no-error-on-unmatched-pattern",
         "--write" if write else "--check",
         *targets,
     ]

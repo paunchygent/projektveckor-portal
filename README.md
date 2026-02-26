@@ -4,8 +4,8 @@ Portal för projektveckor (t.ex. FN-rollspel v.43) som hostas på `hule.educatio
 
 ## Snabbstart (dev)
 
-- Backend: `pdm install -G dev` och sedan `pdm run dev`
-- Frontend: `pdm run frontend:install` och sedan `pdm run frontend:dev`
+- Backend: `pdm install -G dev` och sedan `pdm run dev` (LAN: `pdm run dev:lan`)
+- Frontend: `pdm run frontend:install` och sedan `pdm run frontend:dev` (LAN: `pdm run frontend:dev:lan`)
 
 ## Docs
 

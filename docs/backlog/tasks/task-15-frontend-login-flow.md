@@ -1,16 +1,16 @@
 ---
-id: 'task-15-frontend-login-flow'
-title: 'Frontend: login/logout och admin-nav (integrerat auth-flöde)'
-type: 'task'
-status: 'proposed'
-priority: 'medium'
-created: '2026-02-26'
-last_updated: '2026-02-26'
+id: "task-15-frontend-login-flow"
+title: "Frontend: login/logout och admin-nav (integrerat auth-flöde)"
+type: "task"
+status: "proposed"
+priority: "medium"
+created: "2026-02-26"
+last_updated: "2026-02-26"
 related:
-  - 'docs/backlog/stories/story-auth-mvp.md'
+  - "docs/backlog/stories/story-auth-mvp.md"
 labels:
-  - 'frontend'
-  - 'auth'
+  - "frontend"
+  - "auth"
 ---
 
 PR-sized execution unit; may be linked to a story or standalone.
@@ -38,4 +38,3 @@ Göra auth-flödet användbart i UI: lärare kan logga in och nå admin-sidor, e
 - [ ] Implementation complete
 - [ ] Validation complete
 - [ ] Docs updated
-

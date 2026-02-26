@@ -1,16 +1,16 @@
 ---
-id: 'task-04-frontend-ts-force-consistent-casing'
-title: 'Aktivera forceConsistentCasingInFileNames i frontend'
-type: 'task'
-status: 'completed'
-priority: 'low'
-created: '2026-02-26'
-last_updated: '2026-02-26'
+id: "task-04-frontend-ts-force-consistent-casing"
+title: "Aktivera forceConsistentCasingInFileNames i frontend"
+type: "task"
+status: "completed"
+priority: "low"
+created: "2026-02-26"
+last_updated: "2026-02-26"
 related:
-  - 'docs/backlog/stories/story-doc-as-code-mvp.md'
+  - "docs/backlog/stories/story-doc-as-code-mvp.md"
 labels:
-  - 'frontend'
-  - 'typescript'
+  - "frontend"
+  - "typescript"
 ---
 
 PR-sized execution unit; may be linked to a story or standalone.
@@ -36,4 +36,3 @@ Minska “funkar på min maskin”-problem mellan Windows/macOS/Linux genom att 
 - [ ] Implementation complete
 - [ ] Validation complete
 - [ ] Docs updated
-

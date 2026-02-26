@@ -1,16 +1,16 @@
 ---
-id: 'story-auth-mvp'
-title: 'Auth MVP: teacher-only admin via HuleEdu/Skriptoteket (ingen hardcoded auth)'
-type: 'story'
-status: 'proposed'
-priority: 'high'
-created: '2026-02-26'
-last_updated: '2026-02-26'
+id: "story-auth-mvp"
+title: "Auth MVP: teacher-only admin via HuleEdu/Skriptoteket (ingen hardcoded auth)"
+type: "story"
+status: "proposed"
+priority: "high"
+created: "2026-02-26"
+last_updated: "2026-02-26"
 related:
-  - 'docs/backlog/epics/epic-auth-integration.md'
-  - 'docs/decisions/0003-auth-integration-huleedu-skriptoteket.md'
+  - "docs/backlog/epics/epic-auth-integration.md"
+  - "docs/decisions/0003-auth-integration-huleedu-skriptoteket.md"
 labels:
-  - 'auth'
+  - "auth"
 ---
 
 Implementation slice with acceptance-driven scope.
@@ -45,4 +45,3 @@ Få en första fungerande inloggning/auktorisering för lärarytan som använder
 - [ ] Implementation complete
 - [ ] Tests and validations complete
 - [ ] Docs synchronized
-

@@ -1,16 +1,16 @@
 ---
-id: 'task-14-backend-auth-port-and-middleware'
-title: 'Backend: auth-port + middleware/dependency (HuleEdu/Skriptoteket)'
-type: 'task'
-status: 'proposed'
-priority: 'high'
-created: '2026-02-26'
-last_updated: '2026-02-26'
+id: "task-14-backend-auth-port-and-middleware"
+title: "Backend: auth-port + middleware/dependency (HuleEdu/Skriptoteket)"
+type: "task"
+status: "proposed"
+priority: "high"
+created: "2026-02-26"
+last_updated: "2026-02-26"
 related:
-  - 'docs/backlog/stories/story-auth-mvp.md'
+  - "docs/backlog/stories/story-auth-mvp.md"
 labels:
-  - 'backend'
-  - 'auth'
+  - "backend"
+  - "auth"
 ---
 
 PR-sized execution unit; may be linked to a story or standalone.
@@ -38,4 +38,3 @@ Implementera auth som DIP-kompatibel port/adaptrar så att web-lagret kan kräva
 - [ ] Implementation complete
 - [ ] Validation complete
 - [ ] Docs updated
-

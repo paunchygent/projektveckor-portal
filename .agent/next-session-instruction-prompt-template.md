@@ -1,6 +1,7 @@
 # Next-session instruction prompt (template)
 
 Rules:
+
 - Keep headings and section order unchanged.
 - Write to a new agent/developer as “you”.
 - No secrets.
@@ -29,4 +30,3 @@ Rules:
 
 - Backend: `pdm run dev`
 - Frontend: `pnpm -C frontend dev`
-

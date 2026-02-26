@@ -1,16 +1,16 @@
 ---
-id: 'task-02-pyproject-toml-for-pdm-scripts'
-title: 'Gör pyproject.toml giltig för PDM scripts (kolon-nycklar)'
-type: 'task'
-status: 'completed'
-priority: 'high'
-created: '2026-02-26'
-last_updated: '2026-02-26'
+id: "task-02-pyproject-toml-for-pdm-scripts"
+title: "Gör pyproject.toml giltig för PDM scripts (kolon-nycklar)"
+type: "task"
+status: "completed"
+priority: "high"
+created: "2026-02-26"
+last_updated: "2026-02-26"
 related:
-  - 'docs/backlog/stories/story-doc-as-code-mvp.md'
+  - "docs/backlog/stories/story-doc-as-code-mvp.md"
 labels:
-  - 'pdm'
-  - 'docs-as-code'
+  - "pdm"
+  - "docs-as-code"
 ---
 
 PR-sized execution unit; may be linked to a story or standalone.
@@ -37,4 +37,3 @@ Säkerställa att `pyproject.toml` är giltig TOML för PDM och att scripts med 
 - [ ] Implementation complete
 - [ ] Validation complete
 - [ ] Docs updated
-

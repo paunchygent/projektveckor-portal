@@ -5,7 +5,7 @@ Use this skill when you need to create/update documentation, rules, or agent han
 ## Rules-first workflow
 
 1. Read `.agents/rules/000-rule-index.md`.
-2. Update the *rule* that governs the workflow before adding exceptions.
+2. Update the _rule_ that governs the workflow before adding exceptions.
 3. Update `.agents/handoff.md` at the end of the session with what changed + next steps.
 
 ## Canonical files

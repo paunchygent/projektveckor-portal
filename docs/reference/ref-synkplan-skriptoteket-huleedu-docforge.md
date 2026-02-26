@@ -31,6 +31,7 @@ Använd Skriptoteket, HuleEdu (inkl. Sir-Convert-a-Lot) och Docforge som “käl
 - **Pre-commit som kvalitetsport:** `.pre-commit-config.yaml` kör docs-validate + övriga checks.
 
 Konsekvens för portalen:
+
 - Inför en “one command”-gate (t.ex. `pdm run lint`) som kör `validate-docs` + `validate-backlog` (+ ev. `check:md`) utöver ruff.
 - Lägg process-dokument i `docs/reference/` så planering och reviews blir konsekventa.
 
@@ -44,6 +45,7 @@ Högst värde att cherry-picka in ovanpå nuvarande Sir-Convert-a-Lot-lika setup
 - **Rule-surface authority guard** (reglerna är normativ yta; ingen “shadow policy”).
 
 Praktiska källor i HuleEdu:
+
 - `scripts/docs_mgmt/contracts/docs_contract_v2.yaml`
 - `scripts/docs_mgmt/validators/*`
 - `scripts/backlog_mgmt/*` (om vi vill ha striktare backlog-index/arkiv)
@@ -60,6 +62,7 @@ I repo `docforge` finns tasks som beskriver syftet med HTML-portalen och den his
   - Repo-målbild: förvalta HTML-templates + CSS-pipeline och automatisera konvertering (WeasyPrint/Pandoc) till PDF/DOCX.
 
 Konsekvens för portalen:
+
 - Håll “HTML-export som portal” som separat leveransartefakt under `frontend/public/...` (publicering), och håll “HTML som källa för PDF/DOCX” i Docforge/Sir-Convert-a-Lot (produktion).
 
 ## Förslag: skill-katalog (vad vi vill automatisera)
