@@ -42,6 +42,17 @@
 - Doclib smoke test: seedade exempel-dokument under `data/doclib/fn-rollspel/v43/borja-har/` och verifierade:
   - listning: `GET /api/documents?prefix=fn-rollspel/v43`
   - preview: `GET /d/fn-rollspel/v43/borja-har` (Markdown → HTML)
+- Auth (cookie+CSRF, Skriptoteket-stil): införde portalens tunna BFF-yta mot HuleEdu Identity:
+  - `POST /api/v1/auth/login` (sätter httpOnly cookies + CSRF-cookie)
+  - `GET /api/v1/auth/me` (introspection + refresh vid behov)
+  - `GET /api/v1/auth/csrf` (säkerställer CSRF-cookie)
+  - `POST /api/v1/auth/logout` (kräver `X-CSRF-Token`)
+- Frontend auth: lade till Pinia + `/login`-vy som använder cookie+CSRF mot API (`frontend/src/stores/auth.ts` + `frontend/src/api/client.ts`).
+- Export (task-10 slice): teacher-only export-API via Sir Convert a Lot v2:
+  - `POST /api/admin/documents/{doc_path}/exports` (kräver inloggning + CSRF)
+  - `GET /api/admin/exports/{export_id}`
+  - `GET /api/admin/exports/{export_id}/artifact`
+- DI: migrerade runtime-DI till Dishka (bort från `request.app.state`/service locator) och kopplade routes via `DishkaRoute` + `FromDishka`: `src/projektveckor_portal/di/container.py` (migrationsplanen finns kvar i `docs/reference/ref-dishka-migration-plan.md`).
 
 ## Decisions
 
@@ -50,7 +61,7 @@
 - Portalen använder doc-as-code som normativt arbetssätt (backlog/ADR/PRD/ref + kontraktvalidering).
 - Repo-root PDM-scripts kapslar frontend-kommandon (Skriptoteket-stil): `pdm run frontend:*`.
 - ADR-0002: dokument hostas på hemmaservern och preview/redigering sker i portalen; exports skapas via Sir Convert a Lot.
-- ADR-0003 (proposed): AuthN/AuthZ återanvänds från HuleEdu/Skriptoteket, inte hardcoded i portalen.
+- ADR-0003 (accepted): AuthN/AuthZ återanvänds från HuleEdu/Skriptoteket; kort sikt via portalens tunna BFF (/login + cookies + CSRF), lång sikt via gemensam login och redan satta cookies.
 - Docforge (historik): SharePoint-preview begränsade HTML→HTML-navigation; hostad portal var robust fallback (se Docforge task `TASKS/content/fn_rollspel/fn-rollspel-v43-ht25-sharepoint-html-portal.md`).
 
 ## Next steps
@@ -62,6 +73,8 @@
 - Slutför auth discovery (HuleEdu/Skriptoteket) och acceptera ADR-0003 med exakt modell (JWT/OIDC/gateway).
 - Implementera exportflöde (Sir Convert a Lot v2) + lagring under `PVP_EXPORTS_ROOT`.
 - Om `node`/`pnpm` inte hittas i PATH på devmaskinen: lägg till `C:\Program Files\nodejs\` och `%APPDATA%\npm\` i PATH (krävs för `pdm run frontend:*`).
+- Dra upp första admin-sidan i frontend (doc-editor + exportknappar) kopplad till export-endpoints.
+- Påbörja Dishka-migrering steg 1–2 enligt referensen (container + FastAPI-integration, men bibehåll beteende).
 - Kör lokalt (prioriterad ordning):
   - `pdm lock` + `pdm install`
   - `pdm run validate-docs` + `pdm run validate-backlog`

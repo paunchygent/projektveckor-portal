@@ -27,9 +27,15 @@ labels: []
 - 2026-02-26: Frontend: installerade pnpm-deps och verifierade `frontend:typecheck` + `frontend:build`.
 - 2026-02-26: Doclib: seedade exempel-dokument under `data/doclib/fn-rollspel/v43/borja-har/` och verifierade listning + preview.
 - 2026-02-26: Markdown quality: fixade `check:md`-körning på Windows och exkluderade `.tools/` från markdownlint.
+- 2026-02-26: Auth: bytte till cookie+CSRF (Skriptoteket-stil) med `/api/v1/auth/*` och `/login`-vy i frontend. ADR-0003 satt till accepted.
+- 2026-02-26: Exports: implementerade första slice för `task-10` (teacher-only export-API via Sir Convert a Lot v2 + lagring under `data/exports`).
+- 2026-02-26: DI: lade referens för Dishka-migrering (plan utan runtime-ändring).
 
 ## Next Actions
 
-1. Ta fram konkret integrationsbrief för Sir Convert a Lot (API/CLI, jobmodell, format) och skapa adapter-kontrakt i `docs/reference/`.
-2. Implementera första slice för exportflödet (task-10 + API-route) och lagring under `PVP_EXPORTS_ROOT`.
-3. Slutför auth discovery och acceptera ADR-0003 (exakt modell för JWT/OIDC/introspection + roller).
+1. Koppla portalen mot riktiga tjänster i dev/prod:
+   - sätt `PVP_IDENTITY_BASE_URL` + `PVP_IDENTITY_INTROSPECT_URL`
+   - sätt `PVP_SIR_CONVERT_A_LOT_*` och verifiera PDF/DOCX-export end-to-end.
+2. Implementera `task-12` i frontend: doc-editor + export-knappar + statuspolling (baserat på `/api/admin/exports/...`).
+3. Förbättra roll-gränser: teacher-only för redigering/export, admin-only för framtida no-code/konfiguration.
+4. Starta Dishka-migrering steg 1 (container + wiring i composition root) utan att ändra externt beteende.

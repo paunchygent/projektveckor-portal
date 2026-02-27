@@ -25,8 +25,37 @@
 
     <footer class="footer">
       <a href="/healthz" target="_blank" rel="noopener">Driftstatus</a>
+      <span class="footer-sep">·</span>
+      <RouterLink v-if="!auth.isAuthenticated" to="/login">Logga in</RouterLink>
+      <button v-else class="linklike" type="button" @click="onLogout">Logga ut</button>
     </footer>
   </main>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { onMounted } from "vue";
+
+import { useAuthStore } from "../stores/auth";
+
+const auth = useAuthStore();
+
+onMounted(async () => {
+  await auth.bootstrap();
+});
+
+async function onLogout(): Promise<void> {
+  await auth.logout();
+}
+</script>
+
+<style scoped>
+.linklike {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--accent);
+  font: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+}
+</style>

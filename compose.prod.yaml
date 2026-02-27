@@ -16,6 +16,8 @@ services:
     image: projektveckor-portal-web:latest
     container_name: projektveckor-portal-web
     restart: unless-stopped
+    env_file:
+      - .env
     environment:
       PVP_ENVIRONMENT: production
       PVP_SERVICE_VERSION: "0.1.0"

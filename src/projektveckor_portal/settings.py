@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+from typing import Literal
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -28,7 +29,7 @@ class Settings(BaseSettings):
     csrf_cookie_name: str = "pvp_csrf_token"
 
     cookie_secure: bool = False
-    cookie_samesite: str = "lax"
+    cookie_samesite: Literal["lax", "strict", "none"] = "lax"
 
 
 settings = Settings()

@@ -6,17 +6,11 @@ from fastapi import FastAPI
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 
-from projektveckor_portal.application.documents_service import DocumentsService
-from projektveckor_portal.infrastructure.auth.identity_introspection import (
-    IdentityIntrospectionAuthenticator,
-    IdentityIntrospectionConfig,
-)
-from projektveckor_portal.infrastructure.documents.filesystem_repo import (
-    FileSystemDocumentRepository,
-)
+from projektveckor_portal.di.container import setup_di
 from projektveckor_portal.settings import settings
-from projektveckor_portal.web.dependencies import AppDependencies
+from projektveckor_portal.web.auth_routes import router as auth_router
 from projektveckor_portal.web.documents_routes import router as documents_router
+from projektveckor_portal.web.exports_routes import router as exports_router
 
 
 def create_app() -> FastAPI:
@@ -28,23 +22,12 @@ def create_app() -> FastAPI:
             {"status": "ok", "service": settings.service_name, "version": settings.service_version}
         )
 
-    _configure_dependencies(app)
+    setup_di(app)
+    app.include_router(auth_router)
     app.include_router(documents_router)
+    app.include_router(exports_router)
     _configure_spa(app)
     return app
-
-
-def _configure_dependencies(app: FastAPI) -> None:
-    docs_root = _repo_root() / settings.docs_root
-    repo = FileSystemDocumentRepository(root=docs_root)
-    app.state.documents_service = DocumentsService(repo)
-
-    authenticator = None
-    if settings.identity_introspect_url:
-        authenticator = IdentityIntrospectionAuthenticator(
-            config=IdentityIntrospectionConfig(introspect_url=settings.identity_introspect_url)
-        )
-    app.state.deps = AppDependencies(authenticator=authenticator)
 
 
 def _configure_spa(app: FastAPI) -> None:
@@ -71,4 +54,3 @@ def _repo_root() -> Path:
 
 
 app = create_app()
-

@@ -1,0 +1,360 @@
+INFO:     Will watch for changes in these directories: ['C:\\Users\\paunc.BETTY_LAPTOP\\Documents\\Repos\\projektveckor-portal']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [28828] using WatchFiles
+Process SpawnProcess-1:
+Traceback (most recent call last):
+  File "C:\Users\paunc.BETTY_LAPTOP\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\process.py", line 320, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "C:\Users\paunc.BETTY_LAPTOP\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\uvicorn\_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    ~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\uvicorn\server.py", line 75, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "C:\Users\paunc.BETTY_LAPTOP\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 204, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Users\paunc.BETTY_LAPTOP\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\paunc.BETTY_LAPTOP\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 719, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\uvicorn\server.py", line 79, in serve
+    await self._serve(sockets)
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\uvicorn\server.py", line 86, in _serve
+    config.load()
+    ~~~~~~~~~~~^^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\uvicorn\config.py", line 441, in load
+    self.loaded_app = import_from_string(self.app)
+                      ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\uvicorn\importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "C:\Users\paunc.BETTY_LAPTOP\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1398, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 759, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\src\projektveckor_portal\app.py", line 11, in <module>
+    from projektveckor_portal.web.auth_routes import router as auth_router
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\src\projektveckor_portal\web\auth_routes.py", line 82, in <module>
+    @router.post("/login", response_model=LoginResponse)
+     ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\fastapi\routing.py", line 1179, in decorator
+    self.add_api_route(
+    ~~~~~~~~~~~~~~~~~~^
+        path,
+        ^^^^^
+    ...<23 lines>...
+        generate_unique_id_function=generate_unique_id_function,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\fastapi\routing.py", line 1115, in add_api_route
+    route = route_class(
+        self.prefix + path,
+    ...<27 lines>...
+        ),
+    )
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\fastapi\routing.py", line 690, in __init__
+    self.dependant = get_dependant(
+                     ~~~~~~~~~~~~~^
+        path=self.path_format, call=self.endpoint, scope="function"
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\fastapi\dependencies\utils.py", line 279, in get_dependant
+    param_details = analyze_param(
+        param_name=param_name,
+    ...<2 lines>...
+        is_path_param=is_path_param,
+    )
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\fastapi\dependencies\utils.py", line 508, in analyze_param
+    field = create_model_field(
+        name=param_name,
+    ...<3 lines>...
+        field_info=field_info,
+    )
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\fastapi\utils.py", line 75, in create_model_field
+    raise fastapi.exceptions.FastAPIError(
+        _invalid_args_message.format(type_=type_)
+    ) from None
+fastapi.exceptions.FastAPIError: Invalid args for response field! Hint: check that typing.Annotated[projektveckor_portal.interfaces.auth.IdentityClient | None, _FromComponent(component='')] is a valid Pydantic field type. If you are using a return type annotation that is not a valid Pydantic field (e.g. Union[Response, dict, None]) you can disable generating the response model from the type annotation with the path operation decorator parameter response_model=None. Read more: https://fastapi.tiangolo.com/tutorial/response-model/
+WARNING:  WatchFiles detected changes in 'src\projektveckor_portal\web\dependencies.py'. Reloading...
+Process SpawnProcess-2:
+Traceback (most recent call last):
+  File "C:\Users\paunc.BETTY_LAPTOP\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\process.py", line 320, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "C:\Users\paunc.BETTY_LAPTOP\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\uvicorn\_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    ~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\uvicorn\server.py", line 75, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "C:\Users\paunc.BETTY_LAPTOP\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 204, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Users\paunc.BETTY_LAPTOP\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\paunc.BETTY_LAPTOP\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 719, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\uvicorn\server.py", line 79, in serve
+    await self._serve(sockets)
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\uvicorn\server.py", line 86, in _serve
+    config.load()
+    ~~~~~~~~~~~^^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\uvicorn\config.py", line 441, in load
+    self.loaded_app = import_from_string(self.app)
+                      ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\uvicorn\importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "C:\Users\paunc.BETTY_LAPTOP\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1398, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 759, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\src\projektveckor_portal\app.py", line 11, in <module>
+    from projektveckor_portal.web.auth_routes import router as auth_router
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\src\projektveckor_portal\web\auth_routes.py", line 82, in <module>
+    @router.post("/login", response_model=LoginResponse)
+     ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\fastapi\routing.py", line 1179, in decorator
+    self.add_api_route(
+    ~~~~~~~~~~~~~~~~~~^
+        path,
+        ^^^^^
+    ...<23 lines>...
+        generate_unique_id_function=generate_unique_id_function,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\fastapi\routing.py", line 1115, in add_api_route
+    route = route_class(
+        self.prefix + path,
+    ...<27 lines>...
+        ),
+    )
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\fastapi\routing.py", line 690, in __init__
+    self.dependant = get_dependant(
+                     ~~~~~~~~~~~~~^
+        path=self.path_format, call=self.endpoint, scope="function"
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\fastapi\dependencies\utils.py", line 279, in get_dependant
+    param_details = analyze_param(
+        param_name=param_name,
+    ...<2 lines>...
+        is_path_param=is_path_param,
+    )
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\fastapi\dependencies\utils.py", line 508, in analyze_param
+    field = create_model_field(
+        name=param_name,
+    ...<3 lines>...
+        field_info=field_info,
+    )
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\fastapi\utils.py", line 75, in create_model_field
+    raise fastapi.exceptions.FastAPIError(
+        _invalid_args_message.format(type_=type_)
+    ) from None
+fastapi.exceptions.FastAPIError: Invalid args for response field! Hint: check that typing.Annotated[projektveckor_portal.interfaces.auth.IdentityClient | None, _FromComponent(component='')] is a valid Pydantic field type. If you are using a return type annotation that is not a valid Pydantic field (e.g. Union[Response, dict, None]) you can disable generating the response model from the type annotation with the path operation decorator parameter response_model=None. Read more: https://fastapi.tiangolo.com/tutorial/response-model/
+WARNING:  WatchFiles detected changes in 'src\projektveckor_portal\web\auth_routes.py'. Reloading...
+Process SpawnProcess-3:
+Traceback (most recent call last):
+  File "C:\Users\paunc.BETTY_LAPTOP\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\process.py", line 320, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "C:\Users\paunc.BETTY_LAPTOP\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\uvicorn\_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    ~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\uvicorn\server.py", line 75, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "C:\Users\paunc.BETTY_LAPTOP\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 204, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Users\paunc.BETTY_LAPTOP\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\paunc.BETTY_LAPTOP\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 719, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\uvicorn\server.py", line 79, in serve
+    await self._serve(sockets)
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\uvicorn\server.py", line 86, in _serve
+    config.load()
+    ~~~~~~~~~~~^^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\uvicorn\config.py", line 441, in load
+    self.loaded_app = import_from_string(self.app)
+                      ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\uvicorn\importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "C:\Users\paunc.BETTY_LAPTOP\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1398, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 759, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\src\projektveckor_portal\app.py", line 12, in <module>
+    from projektveckor_portal.web.documents_routes import router as documents_router
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\src\projektveckor_portal\web\documents_routes.py", line 30, in <module>
+    @router.get("/api/documents")
+     ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\fastapi\routing.py", line 1179, in decorator
+    self.add_api_route(
+    ~~~~~~~~~~~~~~~~~~^
+        path,
+        ^^^^^
+    ...<23 lines>...
+        generate_unique_id_function=generate_unique_id_function,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\fastapi\routing.py", line 1115, in add_api_route
+    route = route_class(
+        self.prefix + path,
+    ...<27 lines>...
+        ),
+    )
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\fastapi\routing.py", line 690, in __init__
+    self.dependant = get_dependant(
+                     ~~~~~~~~~~~~~^
+        path=self.path_format, call=self.endpoint, scope="function"
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\fastapi\dependencies\utils.py", line 279, in get_dependant
+    param_details = analyze_param(
+        param_name=param_name,
+    ...<2 lines>...
+        is_path_param=is_path_param,
+    )
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\fastapi\dependencies\utils.py", line 508, in analyze_param
+    field = create_model_field(
+        name=param_name,
+    ...<3 lines>...
+        field_info=field_info,
+    )
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\fastapi\utils.py", line 75, in create_model_field
+    raise fastapi.exceptions.FastAPIError(
+        _invalid_args_message.format(type_=type_)
+    ) from None
+fastapi.exceptions.FastAPIError: Invalid args for response field! Hint: check that typing.Annotated[projektveckor_portal.application.documents_service.DocumentsService, _FromComponent(component='')] is a valid Pydantic field type. If you are using a return type annotation that is not a valid Pydantic field (e.g. Union[Response, dict, None]) you can disable generating the response model from the type annotation with the path operation decorator parameter response_model=None. Read more: https://fastapi.tiangolo.com/tutorial/response-model/
+WARNING:  WatchFiles detected changes in 'src\projektveckor_portal\web\documents_routes.py'. Reloading...
+Process SpawnProcess-4:
+Traceback (most recent call last):
+  File "C:\Users\paunc.BETTY_LAPTOP\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\process.py", line 320, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "C:\Users\paunc.BETTY_LAPTOP\AppData\Local\Python\pythoncore-3.14-64\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\uvicorn\_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    ~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\uvicorn\server.py", line 75, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "C:\Users\paunc.BETTY_LAPTOP\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 204, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Users\paunc.BETTY_LAPTOP\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\paunc.BETTY_LAPTOP\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 719, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\uvicorn\server.py", line 79, in serve
+    await self._serve(sockets)
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\uvicorn\server.py", line 86, in _serve
+    config.load()
+    ~~~~~~~~~~~^^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\uvicorn\config.py", line 441, in load
+    self.loaded_app = import_from_string(self.app)
+                      ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\uvicorn\importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "C:\Users\paunc.BETTY_LAPTOP\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1398, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 759, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\src\projektveckor_portal\app.py", line 13, in <module>
+    from projektveckor_portal.web.exports_routes import router as exports_router
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\src\projektveckor_portal\web\exports_routes.py", line 36, in <module>
+    @router.post(
+     ~~~~~~~~~~~^
+        "/documents/{doc_path:path}/exports",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dependencies=[Depends(require_csrf)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\fastapi\routing.py", line 1179, in decorator
+    self.add_api_route(
+    ~~~~~~~~~~~~~~~~~~^
+        path,
+        ^^^^^
+    ...<23 lines>...
+        generate_unique_id_function=generate_unique_id_function,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\fastapi\routing.py", line 1115, in add_api_route
+    route = route_class(
+        self.prefix + path,
+    ...<27 lines>...
+        ),
+    )
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\fastapi\routing.py", line 690, in __init__
+    self.dependant = get_dependant(
+                     ~~~~~~~~~~~~~^
+        path=self.path_format, call=self.endpoint, scope="function"
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\fastapi\dependencies\utils.py", line 279, in get_dependant
+    param_details = analyze_param(
+        param_name=param_name,
+    ...<2 lines>...
+        is_path_param=is_path_param,
+    )
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\fastapi\dependencies\utils.py", line 508, in analyze_param
+    field = create_model_field(
+        name=param_name,
+    ...<3 lines>...
+        field_info=field_info,
+    )
+  File "C:\Users\paunc.BETTY_LAPTOP\Documents\Repos\projektveckor-portal\.venv\Lib\site-packages\fastapi\utils.py", line 75, in create_model_field
+    raise fastapi.exceptions.FastAPIError(
+        _invalid_args_message.format(type_=type_)
+    ) from None
+fastapi.exceptions.FastAPIError: Invalid args for response field! Hint: check that typing.Annotated[projektveckor_portal.application.exports_service.ExportsService | None, _FromComponent(component='')] is a valid Pydantic field type. If you are using a return type annotation that is not a valid Pydantic field (e.g. Union[Response, dict, None]) you can disable generating the response model from the type annotation with the path operation decorator parameter response_model=None. Read more: https://fastapi.tiangolo.com/tutorial/response-model/
+WARNING:  WatchFiles detected changes in 'src\projektveckor_portal\web\exports_routes.py'. Reloading...
+INFO:     Started server process [9560]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.

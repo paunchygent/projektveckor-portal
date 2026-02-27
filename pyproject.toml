@@ -19,6 +19,7 @@ dependencies = [
   "pyyaml",
   "markdown",
   "httpx",
+  "dishka",
 ]
 
 [dependency-groups]
