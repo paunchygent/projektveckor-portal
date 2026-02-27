@@ -22,6 +22,7 @@ RUN pnpm build
 
 FROM python-base AS production
 RUN pip install --no-cache-dir pdm==2.26.2
+COPY pyproject.toml README.md /app/
 COPY --from=deps /app/__pypackages__ /app/__pypackages__
 COPY src /app/src
 COPY --from=frontend-build /app/frontend/dist /app/frontend/dist
