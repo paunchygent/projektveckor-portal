@@ -1,3 +1,8 @@
+---
+name: projektveckor-docs-as-code
+description: Use when creating or updating documentation-as-code artifacts in Projektveckor Portal, including docs, rules, and agent handoff updates in `.agents/`.
+---
+
 # Skill: docs-as-code (Projektveckor Portal)
 
 Use this skill when you need to create/update documentation, rules, or agent handoffs in this repo.

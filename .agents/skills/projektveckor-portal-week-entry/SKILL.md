@@ -1,3 +1,8 @@
+---
+name: projektveckor-portal-week-entry
+description: Use when adding or updating project week entries in Projektveckor Portal, including teacher-facing links and week content structure.
+---
+
 # Skill: add a new project week entry
 
 Use this skill when adding a new project week to the portal.

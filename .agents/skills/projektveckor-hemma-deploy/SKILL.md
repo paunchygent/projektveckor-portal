@@ -1,3 +1,8 @@
+---
+name: projektveckor-hemma-deploy
+description: Use when deploying Projektveckor Portal to the home server with Docker Compose, environment setup, and health verification.
+---
+
 # Skill: hemma deploy (hule.education)
 
 Use this skill when deploying the portal to the home server.
