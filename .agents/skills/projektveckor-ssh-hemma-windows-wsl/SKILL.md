@@ -1,6 +1,6 @@
 ---
 name: projektveckor-ssh-hemma-windows-wsl
-description: Hjälp för att få `ssh hemma` att fungera mot hemmaservern från Windows (PowerShell/Windows OpenSSH) och från WSL (Linux OpenSSH), inklusive var nycklar/config/known_hosts ligger, hur man verifierar vilken nyckel som används, hur man lägger till pubkey via Taildrop, och felsökning av hostkey/permission denied/wrong key/SSH-agent.
+description: Hjälp för att få `ssh hemma` att fungera mot hemmaservern från BETTYS-LAPTOP Windows (PowerShell/Windows OpenSSH) och från WSL (Linux OpenSSH), inklusive var nycklar/config/known_hosts ligger, hur man verifierar vilken nyckel som används, hur man lägger till pubkey via Taildrop, och felsökning av hostkey/permission denied/wrong key/SSH-agent.
 ---
 
 # Skill: SSH hemma (Windows + WSL)
