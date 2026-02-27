@@ -65,7 +65,7 @@
   - `GET http://projektveckor-portal-web:8000/api/v1/auth/csrf` → `200`
   - `GET http://huleedu_identity_service:7005/healthz` → `200`
   - `GET http://sir_convert_a_lot_prod:8085/readyz` → `200`
-- Ops (Hemma): upptäckte att `https://projektveckor.hule.education` ger `500` i `nginx-proxy` p.g.a. saknat cert; `acme-companion` misslyckar med Let’s Encrypt p.g.a. DNS `NXDOMAIN` för `projektveckor.hule.education`.
+- Ops (Hemma): initialt gav `https://projektveckor.hule.education` `500` i `nginx-proxy` p.g.a. saknat cert och DNS `NXDOMAIN`; åtgärdat efter DNS A-record + ny cert-order i `acme-companion` (HTTPS/`/healthz` svarar `200`).
 - Ops (Hemma): dokumenterade vilka `.env`-nycklar som är satta på servern (nyckelnamn endast; inga hemligheter i git):
   - `~/apps/projektveckor-portal/.env`: `PVP_*` + `VIRTUAL_HOST` + `LETSENCRYPT_HOST`
   - `~/apps/sir-convert-a-lot/.env`: `SIR_CONVERT_A_LOT_API_KEY`, `SIR_CONVERT_A_LOT_EXPECTED_REVISION`, `SIR_CONVERT_A_LOT_SERVICE_REVISION`
@@ -82,9 +82,8 @@
 
 ## Next steps
 
-- Current task (prod-smoke): få HTTPS för `projektveckor.hule.education` att fungera och kör sedan end-to-end smoke-test (login → preview → teacher-export med CSRF):
-  - Lägg DNS-record (A och ev. AAAA) för `projektveckor.hule.education` så Let’s Encrypt kan utfärda cert (acme-companion visar NXDOMAIN idag).
-  - När cert finns: verifiera `GET https://projektveckor.hule.education/healthz` → `200` och kör smoke-test av `/login` + exports.
+- Current task (prod-smoke): kör end-to-end smoke-test (login → preview → teacher-export med CSRF) nu när HTTPS/cert för `projektveckor.hule.education` fungerar.
+  - Verifiera `GET https://projektveckor.hule.education/healthz` → `200`.
   - Skapa testkonto i Identity och sätt `email_verified=true` samt tilldela `teacher` (Identity kräver verifierad e-post för login).
 
 - Expand FN-rollspel v43 content with the real “dag-för-dag” + roles once the source doc is ready to copy into portal text.
