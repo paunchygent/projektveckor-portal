@@ -53,6 +53,7 @@
   - `GET /api/admin/exports/{export_id}`
   - `GET /api/admin/exports/{export_id}/artifact`
 - DI: migrerade runtime-DI till Dishka (bort från `request.app.state`/service locator) och kopplade routes via `DishkaRoute` + `FromDishka`: `src/projektveckor_portal/di/container.py` (migrationsplanen finns kvar i `docs/reference/ref-dishka-migration-plan.md`).
+- Ops: lade till SSH-runbook + repo-local skill för `ssh hemma` i Windows/WSL: `docs/runbooks/runbook-ssh-hemma-windows-wsl.md` + `.agent/.codex/skills/projektveckor-ssh-hemma-windows-wsl/`.
 
 ## Decisions
 

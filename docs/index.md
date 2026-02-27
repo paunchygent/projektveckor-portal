@@ -4,7 +4,7 @@ id: SPEC-projektveckor-portal-docs
 title: Projektveckor Portal — dokumentation
 status: active
 created: "2026-02-26"
-updated: "2026-02-26"
+updated: "2026-02-27"
 owners:
   - portal
 tags:
@@ -13,6 +13,7 @@ links:
   - docs/docs-structure-spec.md
   - docs/backlog/README.md
   - docs/runbooks/runbook-hemma-deploy.md
+  - docs/runbooks/runbook-ssh-hemma-windows-wsl.md
 ---
 
 Det här repot bygger **Projektveckor Portal**: en webbportal för **Hulebäcksgymnasiets projektveckor** som hostas på `hule.education`.

@@ -1,15 +1,18 @@
-# Local skills (Projektveckor Portal)
+# Repo-lokala skills (Projektveckor Portal)
 
-This folder holds **repo-local skills** that override/extend global Codex skills.
+Den här mappen innehåller **repo-lokala skills** som kan overridea/komplettera globala Codex-skills.
 
 ## Rules
 
-- Local skills live under `.agents/.codex/skills/` and are committed.
-- Global skills live under `$CODEX_HOME/skills/` (on this machine: `/home/paunchygent/.codex/skills/`).
-- Name local variants with a `projektveckor-` prefix to avoid collisions with global skill names.
+- Repo-lokala skills ligger under `.agent/.codex/skills/` och committas.
+- Globala skills ligger under `$CODEX_HOME/skills/`:
+  - Windows: `%USERPROFILE%\.codex\skills\`
+  - WSL/Linux: `~/.codex/skills/`
+- Namnge lokala varianter med prefixet `projektveckor-` för att undvika krockar med globala skill-namn.
 
 ## Current local skills
 
 - `projektveckor-docs-as-code/`
 - `projektveckor-hemma-deploy/`
 - `projektveckor-portal-week-entry/`
+- `projektveckor-ssh-hemma-windows-wsl/`
