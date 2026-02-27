@@ -26,4 +26,4 @@ COPY --from=deps /app/__pypackages__ /app/__pypackages__
 COPY src /app/src
 COPY --from=frontend-build /app/frontend/dist /app/frontend/dist
 EXPOSE 8000
-CMD ["pdm", "run", "serve"]
+CMD ["pdm", "run", "serve:lan"]
