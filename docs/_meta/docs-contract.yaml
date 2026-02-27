@@ -146,7 +146,7 @@ docs:
 
 rules:
   include_globs:
-    - ".agent/rules/*.md"
+    - ".agents/rules/*.md"
   frontmatter_exempt: []
   required:
     - trigger

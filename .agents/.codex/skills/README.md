@@ -4,7 +4,7 @@ Den här mappen innehåller **repo-lokala skills** som kan overridea/komplettera
 
 ## Rules
 
-- Repo-lokala skills ligger under `.agent/.codex/skills/` och committas.
+- Repo-lokala skills ligger under `.agents/.codex/skills/` och committas.
 - Globala skills ligger under `$CODEX_HOME/skills/`:
   - Windows: `%USERPROFILE%\.codex\skills\`
   - WSL/Linux: `~/.codex/skills/`

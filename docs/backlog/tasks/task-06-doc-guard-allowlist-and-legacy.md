@@ -22,7 +22,7 @@ Stoppa “drift” i dokumentstrukturen och gamla paths/kommandon som annars bli
 ## PR Scope
 
 - Top-level allowlist för `docs/` och relevanta undermappar.
-- Legacy-token guard för kända “felstavade/utgångna” paths (t.ex. `.agents/` vs `.agent/`).
+- Legacy-token guard för kända “felstavade/utgångna” paths (t.ex. `.agents/` vs `.agents/`).
 
 ## Deliverables
 

@@ -22,9 +22,9 @@ Rules:
 
 ## Files to look at first
 
-- `.agent/readme-first.md`
-- `.agent/handoff.md`
-- `.agent/rules/000-rule-index.md`
+- `.agents/readme-first.md`
+- `.agents/handoff.md`
+- `.agents/rules/000-rule-index.md`
 
 ## Commands
 

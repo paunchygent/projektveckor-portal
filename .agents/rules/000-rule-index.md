@@ -14,7 +14,7 @@ scope: all
 
 ## Syfte
 
-Reglerna i `.agent/rules/` är normativt “source of truth” för hur vi bygger och underhåller Projektveckor Portal.
+Reglerna i `.agents/rules/` är normativt “source of truth” för hur vi bygger och underhåller Projektveckor Portal.
 
 ## Regler
 

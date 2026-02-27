@@ -2,7 +2,7 @@
 
 Validator:
   - Docs: `docs/_meta/docs-contract.yaml`
-  - Rules: `.agent/rules/*.md`
+  - Rules: `.agents/rules/*.md`
 """
 
 from __future__ import annotations
@@ -322,7 +322,7 @@ def filter_user_paths(paths: list[str]) -> tuple[list[Path], list[Path]]:
         norm = normalize_path(candidate)
         if norm.startswith("docs/") and candidate.suffix == ".md":
             docs_targets.append(candidate)
-        if norm.startswith(".agent/rules/") and candidate.suffix == ".md":
+        if norm.startswith(".agents/rules/") and candidate.suffix == ".md":
             rule_targets.append(candidate)
 
     return docs_targets, rule_targets

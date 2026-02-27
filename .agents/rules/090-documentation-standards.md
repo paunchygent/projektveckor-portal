@@ -31,4 +31,4 @@ scope: all
 
 ## Agent-dokument
 
-- Håll strukturen stabil i `.agent/readme-first.md` och `.agent/handoff.md` (endast innehåll uppdateras).
+- Håll strukturen stabil i `.agents/readme-first.md` och `.agents/handoff.md` (endast innehåll uppdateras).

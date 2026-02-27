@@ -40,7 +40,7 @@ Införa extra validering (“guards”) och ett lokalt kvalitetsstopp så att do
 
 ## Done Definition
 
-- Guards är dokumenterade i `docs/reference/` eller `.agent/rules/`.
+- Guards är dokumenterade i `docs/reference/` eller `.agents/rules/`.
 
 ## Checklist
 

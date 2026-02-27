@@ -14,7 +14,7 @@ from scripts.docs_as_code.common import (
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Create a new rule file in .agent/rules/.")
+    parser = argparse.ArgumentParser(description="Create a new rule file in .agents/rules/.")
     parser.add_argument("name", help="Rule name")
     parser.add_argument("--trigger", default="model_decision", help="Rule trigger value")
     parser.add_argument("--status", default="active", help="Rule status")

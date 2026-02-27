@@ -27,7 +27,7 @@
   - Mallar: `docs/templates/`
   - Valideringsscript + scaffolding: `scripts/docs_as_code/`
   - Markdown quality (prettier + markdownlint): `scripts/maintenance/` + repo-root configs
-- Agent/rules: uppdaterade `.agent/rules/*.md` till kontraktsformat (frontmatter + inga H1-rubriker).
+- Agent/rules: uppdaterade `.agents/rules/*.md` till kontraktsformat (frontmatter + inga H1-rubriker).
 - PDM/TOML: fixade `pyproject.toml` så PDM kan läsa scripts med `:` (citerade nycklar) och tog bort dublett-nyckel som gav `TOMLDecodeError`.
 - Frontend/TS: aktiverade `forceConsistentCasingInFileNames` i `frontend/tsconfig.json`.
 - Backlog: skapade programme→epic→story→task-kedja och backlog-index (`docs/backlog/README-index.md` via `pdm run index-backlog`).
@@ -53,8 +53,7 @@
   - `GET /api/admin/exports/{export_id}`
   - `GET /api/admin/exports/{export_id}/artifact`
 - DI: migrerade runtime-DI till Dishka (bort från `request.app.state`/service locator) och kopplade routes via `DishkaRoute` + `FromDishka`: `src/projektveckor_portal/di/container.py` (migrationsplanen finns kvar i `docs/reference/ref-dishka-migration-plan.md`).
-- Ops: lade till SSH-runbook + repo-local skill för `ssh hemma` i Windows/WSL: `docs/runbooks/runbook-ssh-hemma-windows-wsl.md` + `.agent/.codex/skills/projektveckor-ssh-hemma-windows-wsl/`.
-
+- Ops: lade till SSH-runbook + repo-local skill för `ssh hemma` i Windows/WSL: `docs/runbooks/runbook-ssh-hemma-windows-wsl.md` + `.agents/.codex/skills/projektveckor-ssh-hemma-windows-wsl/`.
 
 - Ops (Hemma): deployade portalen och kopplade den till `hule-network` tillsammans med Identity och Sir Convert a Lot:
   - `projektveckor-portal-web` (healthy), port `8000/tcp`
