@@ -45,6 +45,7 @@ test = "pytest -q"
 # Doc-as-code
 validate-docs = "python -m scripts.docs_as_code.validate_docs"
 validate-backlog = "python -m scripts.docs_as_code.validate_tasks"
+validate-skills = "python -m scripts.docs_as_code.validate_skill_frontmatter"
 index-backlog = "python -m scripts.docs_as_code.index_tasks --root docs/backlog --out docs/backlog/README-index.md --fail-on-missing"
 new-doc = "python -m scripts.docs_as_code.new_doc"
 new-task = "python -m scripts.docs_as_code.new_task"

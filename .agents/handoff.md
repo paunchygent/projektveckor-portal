@@ -27,6 +27,11 @@
   - Mallar: `docs/templates/`
   - Valideringsscript + scaffolding: `scripts/docs_as_code/`
   - Markdown quality (prettier + markdownlint): `scripts/maintenance/` + repo-root configs
+- Skills governance: lade till validering för repo-lokala skills så frontmatter kräver `name` + `description`:
+  - Validator: `scripts/docs_as_code/validate_skill_frontmatter.py`
+  - Tester: `scripts/docs_as_code/tests/test_validate_skill_frontmatter.py`
+  - Scriptalias: `pdm run validate-skills`
+  - Pre-commit hook: `.pre-commit-config.yaml` (`validate-skill-frontmatter`)
 - Agent/rules: uppdaterade `.agents/rules/*.md` till kontraktsformat (frontmatter + inga H1-rubriker).
 - PDM/TOML: fixade `pyproject.toml` så PDM kan läsa scripts med `:` (citerade nycklar) och tog bort dublett-nyckel som gav `TOMLDecodeError`.
 - Frontend/TS: aktiverade `forceConsistentCasingInFileNames` i `frontend/tsconfig.json`.

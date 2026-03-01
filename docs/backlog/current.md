@@ -5,7 +5,7 @@ type: "task-log"
 status: "active"
 priority: "medium"
 created: "2026-02-26"
-last_updated: "2026-02-27"
+last_updated: "2026-02-28"
 related: []
 labels: []
 ---
@@ -26,8 +26,8 @@ labels: []
 - 2026-02-26: Auth: bytte till cookie+CSRF (Skriptoteket-stil) med `/api/v1/auth/*` + `/login`-vy i frontend (ADR-0003 accepted).
 - 2026-02-26: Exports: implementerade första slice för `task-10` (teacher-only export-API via Sir Convert a Lot v2 + lagring under `data/exports`).
 - 2026-02-26: DI: lade referens för Dishka-migrering (plan utan runtime-ändring).
-- 2026-02-26: Markdown quality: fixade `check:md`-körning på Windows och exkluderade `.tools/` från markdownlint.
 - 2026-02-27: Ops: lade till SSH-runbook + repo-local skill samt separata `.env`-mallar för dev (`.env.example.dev`) och prod (`.env.example.prod`).
+- 2026-02-28: Lade till skill-frontmatter-validering för `.agents/skills/*/SKILL.md` (kräver `name` + `description`) med scriptalias `pdm run validate-skills`, tester och pre-commit-hook.
 
 ## Next Actions
 
