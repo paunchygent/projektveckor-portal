@@ -48,7 +48,7 @@ def render_preview_index(items: str) -> str:
         <h2>Översikt</h2>
         <p>Här är dokument som portalen hostar.</p>
         <ul>
-          {items if items else '<li>Inga dokument ännu.</li>'}
+          {items if items else "<li>Inga dokument ännu.</li>"}
         </ul>
       </div>
     </main>

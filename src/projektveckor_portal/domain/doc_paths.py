@@ -27,4 +27,3 @@ class DocPath:
 
         normalized = "/".join(parts)
         return DocPath(normalized)
-

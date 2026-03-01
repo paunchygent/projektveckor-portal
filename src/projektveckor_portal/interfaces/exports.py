@@ -22,4 +22,3 @@ class ExportRecord:
 class ExportCreateResult:
     record: ExportRecord
     artifact_available: bool
-

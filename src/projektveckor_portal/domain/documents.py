@@ -16,4 +16,3 @@ class Document:
     visibility: Visibility
     source_format: SourceFormat
     source: str
-

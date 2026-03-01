@@ -50,7 +50,7 @@ class ExportsService:
         )
 
         existing = self.repo.get(export_id=export_id)
-        if existing is None or existing.job_id is None:
+        if existing is None or existing.job_id is None or existing.status == "failed":
             spec = ConversionJobSpec(
                 source_filename=source_filename,
                 source_format=source_format,
@@ -63,8 +63,8 @@ class ExportsService:
                 export_format=export_format,
                 status=_map_status(job.status),
                 job_id=job.job_id,
-                artifact_filename=None,
-                error_message=None,
+                artifact_filename=None,  # clear any stale file from prior failed attempt
+                error_message=None,  # clear prior error when we resubmit
             )
             self.repo.put(existing)
 
@@ -192,8 +192,12 @@ def _to_source_payload(
 
 def _map_status(status: str) -> ExportStatus:
     normalized = status.strip().lower()
-    if normalized in {"queued", "running", "succeeded", "failed"}:
-        return normalized  # type: ignore[return-value]
-    if normalized in {"canceled", "cancelled"}:
+    if normalized == "queued":
+        return "queued"
+    if normalized == "running":
+        return "running"
+    if normalized == "succeeded":
+        return "succeeded"
+    if normalized in {"failed", "canceled", "cancelled"}:
         return "failed"
     return "failed"

@@ -43,4 +43,3 @@ class IdentityIntrospectionAuthenticator(Authenticator):
         cleaned_roles = frozenset(str(r).strip() for r in roles if str(r).strip())
         org_id = payload.get("org_id") if isinstance(payload.get("org_id"), str) else None
         return CurrentUser(user_id=sub, roles=cleaned_roles, org_id=org_id)
-

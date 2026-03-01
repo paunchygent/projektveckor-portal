@@ -4,7 +4,7 @@ id: REF-sir-convert-a-lot-integration
 title: "Integration: Sir Convert a Lot (API v2) från Projektveckor Portal"
 status: draft
 created: "2026-02-26"
-updated: "2026-02-26"
+updated: "2026-03-01"
 owners:
   - portal
 tags:
@@ -33,6 +33,7 @@ Normativa dokument i `sir-convert-a-lot`:
 - Base path: `/v2`
 - Autentisering: header `X-API-Key`
 - Idempotency vid job-skapande: header `Idempotency-Key`
+- Replay-signal: header `X-Idempotent-Replay: true` när create-job svarar med ett replayat jobb
 - Konverteringar (v2):
   - `html -> pdf`
   - `html -> docx`
@@ -80,6 +81,30 @@ Mål:
 
 - En enda canonical mapping från “portal-dokument” → `JobSpec`.
 - Deterministiska headers (correlation + idempotency) enligt upstream-kontrakt.
+
+## Create-job response shape (v2)
+
+Portalen förväntar sig (minst) följande payloadform för `POST /v2/convert/jobs`:
+
+```json
+{
+  "job": {
+    "job_id": "job_...",
+    "status": "queued"
+  }
+}
+```
+
+Observera att Sir Convert a Lot kan inkludera fler fält (t.ex. länkar); portalen ignorerar okända fält.
+
+## Idempotency och “rerun after fix” (portalens policy)
+
+Portalen använder deterministisk `Idempotency-Key` för create-job (baserat på input + spec).
+
+Om servern svarar med `X-Idempotent-Replay: true` och det replayade jobbet är terminalt `failed`/`canceled`,
+gör portalen automatiskt en (1) extra create-job med en ny idempotency key (suffix `_rerun_<uuid>`).
+
+Syfte: användaren ska inte behöva ändra filnamn eller payload för att “köra om efter fix”.
 
 ## Lagring av exporter
 

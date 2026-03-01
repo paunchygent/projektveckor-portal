@@ -59,9 +59,7 @@ class FileSystemDocumentRepository(DocumentRepository):
         meta_file = doc_dir / "meta.yaml"
         meta_file.write_text(self._dump_meta(record.meta), encoding="utf-8")
 
-        source_filename = (
-            "source.md" if record.meta.source_format == "markdown" else "source.html"
-        )
+        source_filename = "source.md" if record.meta.source_format == "markdown" else "source.html"
         source_file = doc_dir / source_filename
         source_file.write_text(record.source, encoding="utf-8")
 

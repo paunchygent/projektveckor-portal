@@ -3,9 +3,9 @@ from __future__ import annotations
 import json
 from dataclasses import asdict
 from pathlib import Path
-from typing import Any
+from typing import Mapping
 
-from projektveckor_portal.interfaces.exports import ExportRecord
+from projektveckor_portal.interfaces.exports import ExportFormat, ExportRecord, ExportStatus
 
 
 class FileSystemExportsRepository:
@@ -42,14 +42,51 @@ class FileSystemExportsRepository:
         return self._root / export_id / "meta.json"
 
 
-def _from_dict(payload: dict[str, Any]) -> ExportRecord:
+def _from_dict(payload: Mapping[str, object]) -> ExportRecord:
+    export_format_raw = _required_str(payload, "export_format")
+    if export_format_raw == "pdf":
+        export_format: ExportFormat = "pdf"
+    elif export_format_raw == "docx":
+        export_format = "docx"
+    else:
+        export_format = "pdf"
+
+    status_raw = _required_str(payload, "status").strip().lower()
+    if status_raw == "queued":
+        status: ExportStatus = "queued"
+    elif status_raw == "running":
+        status = "running"
+    elif status_raw == "succeeded":
+        status = "succeeded"
+    else:
+        status = "failed"
+
     return ExportRecord(
-        export_id=str(payload.get("export_id", "")).strip(),
-        doc_path=str(payload.get("doc_path", "")).strip(),
-        export_format=str(payload.get("export_format", "")).strip(),  # type: ignore[arg-type]
-        status=str(payload.get("status", "")).strip(),  # type: ignore[arg-type]
-        job_id=str(payload.get("job_id", "")).strip() or None,
-        artifact_filename=str(payload.get("artifact_filename", "")).strip() or None,
-        error_message=str(payload.get("error_message", "")).strip() or None,
+        export_id=_required_str(payload, "export_id"),
+        doc_path=_required_str(payload, "doc_path"),
+        export_format=export_format,
+        status=status,
+        job_id=_optional_str(payload, "job_id"),
+        artifact_filename=_optional_str(payload, "artifact_filename"),
+        error_message=_optional_str(payload, "error_message"),
     )
 
+
+def _required_str(payload: Mapping[str, object], key: str) -> str:
+    value = payload.get(key)
+    if value is None:
+        return ""
+    if isinstance(value, str):
+        return value.strip()
+    return str(value).strip()
+
+
+def _optional_str(payload: Mapping[str, object], key: str) -> str | None:
+    value = payload.get(key)
+    if value is None:
+        return None
+    if isinstance(value, str):
+        stripped = value.strip()
+        return stripped or None
+    stripped = str(value).strip()
+    return stripped or None
