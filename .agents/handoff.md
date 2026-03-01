@@ -74,6 +74,14 @@
   - `~/apps/projektveckor-portal/.env`: `PVP_*` + `VIRTUAL_HOST` + `LETSENCRYPT_HOST`
   - `~/apps/sir-convert-a-lot/.env`: `SIR_CONVERT_A_LOT_API_KEY`, `SIR_CONVERT_A_LOT_EXPECTED_REVISION`, `SIR_CONVERT_A_LOT_SERVICE_REVISION`
 
+- Exports (task-16 slice): “rerun after fix” UX för Sir Convert-a-Lot v2:
+  - Portalens v2-client parser nu v2-envelope `{"job": {...}}` för både create-job och get-job.
+  - Bounded auto-rerun: om `POST /v2/convert/jobs` är idempotent replay (`X-Idempotent-Replay: true`) och jobbet är terminalt `failed/canceled`, gör portalen en (1) ny submit med en ny idempotency key (`_rerun_<uuid>`).
+  - ExportsService resubmittar när en befintlig export är `status="failed"` (samma deterministiska `export_id`, ny `job_id`, rensar fel/artefaktfält).
+  - Fixade meta.json roundtrip så JSON `null` inte blir strängen `"None"` i `FileSystemExportsRepository`.
+  - Första riktiga backend-tester för export retry och v2-client retry under `tests/`.
+  - Uppdaterade referens: `docs/reference/ref-sir-convert-a-lot-integration.md`.
+
 ## Decisions
 
 - Keep week pages as stable, linkable SPA routes (backend already provides history fallback).
@@ -109,6 +117,10 @@
   - port av HuleEdu “guards” (länk-integritet, allowlist, legacy-token guard, rule-surface authority),
   - ev. pre-commit gate (Skriptoteket-mönster),
   - skapande av Codex-skills enligt synkplanen.
+
+- (Cross-repo) Nästa naturliga fortsättning efter att portalen är klar med retry-UX:
+  - uppdatera Skriptoteket integration (om den pratar direkt med Sir Convert-a-Lot),
+  - rensa gamla doc-referenser till “html_to_pdf_handout_templates” och peka på Sir Convert-a-Lot v2 `html -> pdf` istället.
 
 ## Links / references
 
