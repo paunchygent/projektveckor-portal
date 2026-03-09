@@ -23,6 +23,14 @@ Den här runbooken följer samma operativa stil som Skriptoteket/HuleEdu.
 - Externt nätverk finns: `hule-network`
 - Reverse-proxy stack kör (nginx-proxy + LetsEncrypt companion)
 
+## Lagringsmodell på Hemma
+
+- `/srv/scratch` = snabb SSD-arbetsyta för Docker root/BuildKit-cache och
+  aktiva genererade artefakter.
+- `/srv/storage` = stor HDD-datayta för rådata och kall långtidslagring.
+- `/` ska inte vara långsiktig plats för Docker persistent state eller stora
+  artefaktträd.
+
 ## Bygg och starta
 
 På servern:

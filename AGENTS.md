@@ -27,3 +27,11 @@ Det här repot följer en **doc-as-code**-modell (inspirerad av HuleEdu och Skri
 - Backend: `pdm run dev`
 - Frontend (från repo-root): `pdm run frontend:install`, `pdm run frontend:dev`, `pdm run frontend:build`
 - Docs: `pdm run validate-docs`, `pdm run validate-backlog`, `pdm run check:md`
+
+## Hemma Storage Model
+
+- `/srv/scratch` = snabb SSD-arbetsyta för Docker root/BuildKit-cache, modell-
+  och HF-cache samt aktiva genererade artefakter.
+- `/srv/storage` = stor HDD-datayta för rådata/korpusar och kall långtidslagring.
+- `/` får inte vara långsiktig plats för Docker persistent state eller stora
+  ML-/byggartefakter.
