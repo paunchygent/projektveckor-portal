@@ -28,6 +28,12 @@ Det här repot följer en **doc-as-code**-modell (inspirerad av HuleEdu och Skri
 - Frontend (från repo-root): `pdm run frontend:install`, `pdm run frontend:dev`, `pdm run frontend:build`
 - Docs: `pdm run validate-docs`, `pdm run validate-backlog`, `pdm run check:md`
 
+## Skill Router
+
+| Task                                                                       | Start Here |
+| -------------------------------------------------------------------------- | ---------- |
+| Testing strategy, test implementation, test repair, or test-quality audits | `testing`  |
+
 ## Hemma Storage Model
 
 - `/srv/scratch` = snabb SSD-arbetsyta för Docker root/BuildKit-cache, modell-
