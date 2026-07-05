@@ -1,43 +1,27 @@
-# AGENTS.md — Projektveckor Portal
+# Projektveckor Portal Agent Entrypoint
 
-Det här repot följer en **doc-as-code**-modell (inspirerad av HuleEdu och Skriptoteket): rules-first, stabil agent-dokumentation och repeterbara dev/deploy-kommandon.
+Projektveckor Portal follows a docs-as-code model inspired by HuleEdu and
+Skriptoteket: rules first, stable agent documentation, and repeatable
+dev/deploy commands.
 
-## Läsordning (obligatorisk)
+## Read Order
 
 1. `docs/index.md`
 2. `.agents/readme-first.md`
 3. `.agents/rules/000-rule-index.md`
 4. `.agents/handoff.md`
 
-## Icke förhandlingsbart
+## Repo Invariants
 
-- Lägg aldrig in hemligheter (tokens/lösenord) i git.
-- Håll strukturen stabil i `.agents/readme-first.md` och `.agents/handoff.md` (endast innehåll uppdateras).
-- Föredra att uppdatera regler framför ad hoc-undantag.
+- Keep `.agents/readme-first.md` and `.agents/handoff.md` structure stable;
+  update content only.
+- Prefer updating rules over ad hoc exceptions.
+- `.agents/skills/` contains legacy repo-local skills until a governed
+  `.codex/` cutover.
 
-## Arkitekturprinciper (MÅSTE)
-
-- **DDD + Clean Architecture**: domän är “pure”, web/API är tunn, infrastruktur implementerar protokoll.
-- **DIP/DI**: bero på abstraktioner (t.ex. `typing.Protocol`), injicera implementationer.
-- **Strict SRP**: dela moduler innan de blir stora eller otydliga.
-- **Filer < ~500 LoC** som riktlinje (refaktorera tidigt).
-
-## Kommandon (repo-root)
+## Command Policy
 
 - Backend: `pdm run dev`
-- Frontend (från repo-root): `pdm run frontend:install`, `pdm run frontend:dev`, `pdm run frontend:build`
+- Frontend from repo root: `pdm run frontend:install`,
+  `pdm run frontend:dev`, `pdm run frontend:build`
 - Docs: `pdm run validate-docs`, `pdm run validate-backlog`, `pdm run check:md`
-
-## Skill Router
-
-| Task                                                                       | Start Here |
-| -------------------------------------------------------------------------- | ---------- |
-| Testing strategy, test implementation, test repair, or test-quality audits | `testing`  |
-
-## Hemma Storage Model
-
-- `/srv/scratch` = snabb SSD-arbetsyta för Docker root/BuildKit-cache, modell-
-  och HF-cache samt aktiva genererade artefakter.
-- `/srv/storage` = stor HDD-datayta för rådata/korpusar och kall långtidslagring.
-- `/` får inte vara långsiktig plats för Docker persistent state eller stora
-  ML-/byggartefakter.
