@@ -22,7 +22,8 @@ Run from the repository root.
 - Every project week has a stable, linkable SPA route (`/fn-rollspel/v43`);
   the backend serves the history fallback and `/healthz`.
 - Backend: `src/projektveckor_portal/`, Clean Architecture with Dishka DI;
-  domain logic stays out of FastAPI routers and IO adapters.
+  domain logic stays out of FastAPI routers and IO adapters. Split a module
+  before it reaches about 500 lines.
 - Hosted documents live under `PVP_DOCS_ROOT` on Hemma; PDF and DOCX exports
   go through Sir Convert-a-Lot v2. Auth reuses HuleEdu Identity.
 - Secrets and personal data never enter Git; `.env.example.*` hold key names.
