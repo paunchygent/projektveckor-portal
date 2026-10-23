@@ -31,7 +31,6 @@ dev = [
   "types-PyYAML",
   "types-Markdown",
   "pre-commit>=4.3,<5",
-  "repository-governance @ git+https://github.com/paunchygent/skill-repository.git@2054648cc733ec94a0bf1dbfd4ab09e1939667f5#subdirectory=packages/repository_governance",
 ]
 
 [tool.repository-governance]
