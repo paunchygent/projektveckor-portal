@@ -1,13 +1,21 @@
-# .pre-commit-config.yaml
-# See https://pre-commit.com for more information.
-
 repos:
   - repo: local
     hooks:
-      - id: validate-skill-frontmatter
-        name: Validate skill frontmatter (name + description)
-        entry: bash -c 'cd "$(git rev-parse --show-toplevel)" && pdm run validate-skills'
+      - id: docs-validate
+        name: Validate governed documentation
+        entry: pdm run docs-validate
         language: system
-        always_run: true
+        files: ^docs/.*\.(md|yaml)$
         pass_filenames: false
-        stages: [pre-commit]
+      - id: skills-validate
+        name: Validate local skills
+        entry: pdm run skills-validate
+        language: system
+        files: ^\.codex/skills/
+        pass_filenames: false
+      - id: handoff-validate
+        name: Validate handoff
+        entry: pdm run handoff-validate
+        language: system
+        files: ^(handoff\.md|\.codex/(readme-first|handoff)\.md)$
+        pass_filenames: false

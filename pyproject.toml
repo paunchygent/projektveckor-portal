@@ -30,29 +30,96 @@ dev = [
   "pytest-cov",
   "types-PyYAML",
   "types-Markdown",
+  "pre-commit>=4.3,<5",
+  "repository-governance @ git+https://github.com/paunchygent/skill-repository.git@2054648cc733ec94a0bf1dbfd4ab09e1939667f5#subdirectory=packages/repository_governance",
 ]
 
+[tool.repository-governance]
+schema-version = 3
+repository = "projektveckor-portal"
+
+[tool.repository-governance.owners]
+domain = ["projektveckor-portal"]
+
+[tool.repository-governance.setup]
+projects = [{ path = ".", groups = ["default", "dev"] }]
+
+[tool.repository-governance.quality]
+projects = [
+  { path = ".", format = ["src", "scripts", "tests"], lint = ["src", "scripts", "tests"], typecheck-diagnostic-producer = "root-typecheck", test-diagnostic-producer = "root-test" },
+]
+producers = [
+  { name = "root-typecheck", intent = "typecheck", project = ".", command = "typecheck-producer", arguments = [] },
+  { name = "root-test", intent = "test", project = ".", command = "test-producer", arguments = [] },
+]
+validators = [
+  { name = "docs-validate", project = ".", command = "docs-validate", arguments = [] },
+  { name = "skills-validate", project = ".", command = "skills-validate", arguments = [] },
+  { name = "handoff-validate", project = ".", command = "handoff-validate", arguments = [] },
+]
+
+[[tool.repository-governance.quality.cohorts]]
+name = "portal"
+kind = "logical-component"
+paths = ["src/projektveckor_portal", "tests"]
+test-targets = [
+  "tests/test_exports_service_failed_export_retry.py",
+  "tests/test_sir_convert_a_lot_v2_client_retry.py",
+]
+typecheck = "root-typecheck"
+test = "root-test"
+
+[[tool.repository-governance.quality.cohorts]]
+name = "scripts"
+kind = "path"
+path = "scripts"
+test-target = "recursive-tests"
+typecheck = "root-typecheck"
+test = "root-test"
+
 [tool.pdm.scripts]
+# repository-governance:bindings:start
+setup = "/usr/bin/env -u PYTHONPATH -u PEP582_PACKAGES pdm run --project ${HOME}/.codex/repository-governance-runtime cross-repo-worktree-bootstrap --repo-root ${PDM_PROJECT_ROOT}"
+new-worktree = "/usr/bin/env -u PYTHONPATH -u PEP582_PACKAGES pdm run --project ${HOME}/.codex/repository-governance-runtime cross-repo-worktree-create --repo-root ${PDM_PROJECT_ROOT}"
+format = "repository-governance-routine format --repo-root ${PDM_PROJECT_ROOT}"
+lint = "repository-governance-routine lint --repo-root ${PDM_PROJECT_ROOT}"
+typecheck = "repository-governance-routine typecheck --repo-root ${PDM_PROJECT_ROOT}"
+test = "repository-governance-routine test --repo-root ${PDM_PROJECT_ROOT}"
+check = "repository-governance-routine check --repo-root ${PDM_PROJECT_ROOT}"
+new-doc = "repository-governance-new-doc"
+new-epic = "new-epic"
+new-story = "new-story"
+new-task = "new-task"
+new-review = "new-review"
+docs-validate = "repository-governance-docs-validate"
+format-md = "format-md"
+check-md = "check-md"
+format-md-all = "format-md-all"
+check-md-all = "check-md-all"
+# repository-governance:bindings:end
+# repository-governance:auxiliary-bindings:start
+archive-documents = "repository-governance-archive-documents"
+markdownlint-config-sync = "markdownlint-config-sync"
+markdownlint-config-drift-check = "markdownlint-config-drift-check"
+staleness-audit = "repository-governance-staleness-audit --repo-root ${PDM_PROJECT_ROOT}"
+publish-main = "repository-governance-publish-main --repository-root ${PDM_PROJECT_ROOT}"
+verify-main-publication = "repository-governance-verify-main-publication --repository-root ${PDM_PROJECT_ROOT}"
+# repository-governance:auxiliary-bindings:end
 dev = "uvicorn projektveckor_portal.app:app --host 127.0.0.1 --port 8000 --reload"
 "dev:lan" = "uvicorn projektveckor_portal.app:app --host 0.0.0.0 --port 8000 --reload"
 serve = "uvicorn projektveckor_portal.app:app --host 127.0.0.1 --port 8000"
 "serve:lan" = "uvicorn projektveckor_portal.app:app --host 0.0.0.0 --port 8000"
-lint = "ruff check ."
-format = "ruff format ."
-typecheck = "mypy ."
-test = "pytest -q"
+typecheck-producer = "mypy --config-file ${PDM_PROJECT_ROOT}/pyproject.toml"
+test-producer = "pytest -c ${PDM_PROJECT_ROOT}/pyproject.toml -q"
+skills-validate = "repository-governance-skills-validate"
+handoff-validate = "repository-governance-handoff-validate"
+precommit-install = "/usr/bin/env -u PYTHONPATH -u PEP582_PACKAGES pdm run --project ${HOME}/.codex/repository-governance-runtime repository-governance-hooks-install --repo-root ${PDM_PROJECT_ROOT}"
 
 # Doc-as-code
 validate-docs = "python -m scripts.docs_as_code.validate_docs"
 validate-backlog = "python -m scripts.docs_as_code.validate_tasks"
-validate-skills = "python -m scripts.docs_as_code.validate_skill_frontmatter"
 index-backlog = "python -m scripts.docs_as_code.index_tasks --root docs/backlog --out docs/backlog/README-index.md --fail-on-missing"
-new-doc = "python -m scripts.docs_as_code.new_doc"
-new-task = "python -m scripts.docs_as_code.new_task"
 new-programme = "python -m scripts.docs_as_code.new_task --type programme"
-new-epic = "python -m scripts.docs_as_code.new_task --type epic"
-new-story = "python -m scripts.docs_as_code.new_task --type story"
-new-review = "python -m scripts.docs_as_code.new_task --type review"
 new-fix = "python -m scripts.docs_as_code.new_task --type fix"
 new-rule = "python -m scripts.docs_as_code.new_rule"
 
