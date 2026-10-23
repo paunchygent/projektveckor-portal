@@ -29,7 +29,8 @@ Run from the repository root.
 
 ## Local Routes
 
-- Active state: `handoff.md`; durable docs: `docs/index.md`.
+- Active state: `handoff.md`; durable docs: `docs/index.md`; portal
+  overview: `docs/reference/ref-portal-overview.md`.
 - Repo-local skills: `.codex/skills/` (deploy, week entry, docs, hooks, SSH).
 - Docs-as-code and backlog: `agent-docs-governance`, reference
   `projektveckor-portal.md`; planning: `agent-planning`.

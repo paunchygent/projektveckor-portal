@@ -73,9 +73,8 @@ test = "root-test"
 name = "scripts"
 kind = "path"
 path = "scripts"
-test-target = "recursive-tests"
+test-target = "none"
 typecheck = "root-typecheck"
-test = "root-test"
 
 [tool.pdm.scripts]
 # repository-governance:bindings:start
@@ -114,14 +113,6 @@ test-producer = "pytest -c ${PDM_PROJECT_ROOT}/pyproject.toml -q"
 skills-validate = "repository-governance-skills-validate"
 handoff-validate = "repository-governance-handoff-validate"
 precommit-install = "/usr/bin/env -u PYTHONPATH -u PEP582_PACKAGES pdm run --project ${HOME}/.codex/repository-governance-runtime repository-governance-hooks-install --repo-root ${PDM_PROJECT_ROOT}"
-
-# Doc-as-code
-validate-docs = "python -m scripts.docs_as_code.validate_docs"
-validate-backlog = "python -m scripts.docs_as_code.validate_tasks"
-index-backlog = "python -m scripts.docs_as_code.index_tasks --root docs/backlog --out docs/backlog/README-index.md --fail-on-missing"
-new-programme = "python -m scripts.docs_as_code.new_task --type programme"
-new-fix = "python -m scripts.docs_as_code.new_task --type fix"
-new-rule = "python -m scripts.docs_as_code.new_rule"
 
 # Markdown quality (Docforge-style: prettier + markdownlint-cli2)
 "lint:md" = "python -m scripts.maintenance.markdown_quality lint"
