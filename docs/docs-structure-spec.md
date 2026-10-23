@@ -11,7 +11,7 @@ tags:
   - docs-as-code
 ---
 
-> Ersatt 2026-10-23: den lokala docs-kontraktet och `scripts/docs_as_code/`
+> Ersatt 2026-10-23: det lokala docs-kontraktet och `scripts/docs_as_code/`
 > är borttagna. Repository-governance äger strukturen; kör
 > `pdm run docs-validate` och se skillen `projektveckor-docs-as-code`.
 
