@@ -2,18 +2,18 @@
 type: spec
 id: SPEC-docs-structure
 title: Dokumentationsstruktur (doc-as-code)
-status: active
+status: deprecated
 created: "2026-02-26"
-updated: "2026-02-26"
+updated: "2026-10-23"
 owners:
   - portal
 tags:
   - docs-as-code
-links:
-  - docs/_meta/docs-contract.yaml
-  - scripts/docs_as_code/validate_docs.py
-  - scripts/docs_as_code/validate_tasks.py
 ---
+
+> Ersatt 2026-10-23: det lokala docs-kontraktet och `scripts/docs_as_code/`
+> är borttagna. Repository-governance äger strukturen; kör
+> `pdm run docs-validate` och se skillen `projektveckor-docs-as-code`.
 
 ## Syfte
 
