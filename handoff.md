@@ -13,12 +13,12 @@
 - 23Oct: adopted repository governance (TASK-SKILL-16-03-02): root
   `handoff.md`, `AGENTS.md` skeleton, `.codex/skills` with `.claude/skills`
   and `.agents/skills` links, shared governance commands in `pyproject.toml`.
-- Feb26: deployed on Hemma on `hule-network` with Identity and Sir
+- Feb-Mar 2026: deployed on Hemma on `hule-network` with Identity and Sir
   Convert-a-Lot; HTTPS and `/healthz` answer 200 after the DNS A record and
   certificate order.
-- Feb26: export retry for Sir Convert-a-Lot v2 (bounded rerun after an
-  idempotent failed replay), Dishka DI, cookie and CSRF auth BFF against
-  HuleEdu Identity, document library preview and admin write.
+- 1Mar 2026: export retry for Sir Convert-a-Lot v2 (bounded rerun after an
+  idempotent failed replay); 27Feb 2026: Dishka DI, cookie and CSRF auth BFF
+  against HuleEdu Identity, document library preview and admin write.
 
 ## Facts
 
