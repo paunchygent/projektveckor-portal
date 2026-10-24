@@ -1,8 +1,27 @@
 {
   "schema_version": 1,
   "repository": "projektveckor-portal",
-  "source_set_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-  "documents": [],
+  "source_set_digest": "de0efe400a57075af9ef44f725ff8846986a8aa9426147b4a3b1700962972023",
+  "documents": [
+    {
+      "id": "TASK-PROJV-REP-0001",
+      "type": "task",
+      "title": "Add the markdown-format pre-commit hook and install hooks on both hosts",
+      "path": "docs/backlog/tasks/task-projv-rep-0001-add-the-markdown-format-pre-commit-hook-and-install-hooks-on-both-hosts.md",
+      "status": "proposed",
+      "task_kind": "repository",
+      "owners": [
+        {
+          "kind": "domain",
+          "id": "projektveckor-portal"
+        }
+      ],
+      "closeout_review": {
+        "record": "inline",
+        "status": "not_started"
+      }
+    }
+  ],
   "decision_index": {
     "decisions": []
   }
