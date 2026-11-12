@@ -1,5 +1,0 @@
-# Decisions
-
-## Current ADRs
-
-- none
