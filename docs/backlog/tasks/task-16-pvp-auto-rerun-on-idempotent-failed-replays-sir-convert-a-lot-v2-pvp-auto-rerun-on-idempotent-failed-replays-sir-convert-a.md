@@ -56,7 +56,7 @@ Make “retry export after a fix” behave as users expect:
 ## Acceptance Criteria
 
 - [x] When an export record exists with `status="failed"`, calling export again creates a new job and
-      stores a new `job_id`.
+  stores a new `job_id`.
 - [x] Client behavior:
   - no rerun when a non-replayed job fails,
   - rerun occurs when replayed terminal failure is detected.

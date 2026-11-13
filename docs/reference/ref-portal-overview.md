@@ -10,9 +10,9 @@ owners:
 tags:
   - docs-as-code
 links:
-  - docs/backlog/README.md
-  - docs/runbooks/runbook-hemma-deploy.md
-  - docs/runbooks/runbook-ssh-hemma-windows-wsl.md
+  - docs/backlog/backlog-reference.md
+  - docs/runbooks/run-hemma-deploy.md
+  - docs/runbooks/run-ssh-hemma-windows-wsl.md
 ---
 
 Det här repot bygger **Projektveckor Portal**: en webbportal för **Hulebäcksgymnasiets projektveckor** som hostas på `hule.education`.
@@ -62,7 +62,7 @@ Praktiskt arbetsflöde:
 
 ## Deploy
 
-Se `docs/runbooks/runbook-hemma-deploy.md`.
+Se `docs/runbooks/run-hemma-deploy.md`.
 
 ## Dev workflow
 

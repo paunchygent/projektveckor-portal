@@ -9,7 +9,7 @@ Använd den här skillen när en användare vill ansluta till hemmaservern med `
 
 ## Canonical runbook
 
-- `docs/runbooks/runbook-ssh-hemma-windows-wsl.md`
+- `docs/runbooks/run-ssh-hemma-windows-wsl.md`
 
 ## Installera globalt (valfritt)
 
@@ -116,4 +116,4 @@ Triagera i den här ordningen:
 
 Om du hittar ett återkommande fel (ny Tailscale/Taildrop-variant, ny standardplats för mottagna filer, eller ny typ av hostkey-problem), uppdatera:
 
-- `docs/runbooks/runbook-ssh-hemma-windows-wsl.md`
+- `docs/runbooks/run-ssh-hemma-windows-wsl.md`

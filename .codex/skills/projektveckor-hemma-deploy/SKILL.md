@@ -6,7 +6,7 @@ description: Use when deploying Projektveckor Portal to the home server with Doc
 # Skill: hemma deploy (hule.education)
 
 Use this skill when deploying the portal to the home server. The full
-procedure is `docs/runbooks/runbook-hemma-deploy.md`.
+procedure is `docs/runbooks/run-hemma-deploy.md`.
 
 ## Canonical deploy files
 

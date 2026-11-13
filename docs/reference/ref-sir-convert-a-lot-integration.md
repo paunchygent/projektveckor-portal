@@ -12,7 +12,7 @@ tags:
   - integration
 links:
   - docs/decisions/0002-self-hosted-documents-and-conversion.md
-  - docs/backlog/tasks/task-10-sir-convert-a-lot-adapter.md
+  - docs/backlog/tasks/task-10-sir-convert-a-lot-adapter-backend-adapter-mot-sir-convert-a-lot-export-pdf-docx.md
 ---
 
 ## Syfte
@@ -44,6 +44,7 @@ Normativa dokument i `sir-convert-a-lot`:
 ## Endpoints (API v2)
 
 1. `POST /v2/convert/jobs` (multipart)
+
    - `file`: PDF/MD/HTML
    - `job_spec`: JSON-sträng (v2 JobSpec)
    - `resources`: valfri zip (CSS/bilder/fonts)
@@ -51,12 +52,15 @@ Normativa dokument i `sir-convert-a-lot`:
    - query: `wait_seconds=0..20` (valfritt)
 
 2. `GET /v2/convert/jobs/{job_id}`
+
    - status + länkar
 
 3. `GET /v2/convert/jobs/{job_id}/result`
+
    - metadata när `succeeded`
 
 4. `GET /v2/convert/jobs/{job_id}/artifact`
+
    - binär output (PDF/DOCX) när `succeeded`
 
 5. `POST /v2/convert/jobs/{job_id}/cancel`

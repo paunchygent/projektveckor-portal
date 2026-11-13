@@ -11,7 +11,7 @@ tags:
   - docs-as-code
 links:
   - docs/_meta/docs-contract.yaml
-  - docs/backlog/README.md
+  - docs/backlog/backlog-reference.md
 ---
 
 ## Syfte

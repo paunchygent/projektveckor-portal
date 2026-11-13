@@ -22,7 +22,7 @@ Göra `pdm run index-backlog` kompatibel med backlog-valideringen, så att index
 ## PR Scope
 
 - Indexgenerator skriver frontmatter och använder H2 (inga H1).
-- Output placeras som `docs/backlog/README-index.md` och undantas från att indexera sig själv.
+- Output placeras som `docs/backlog/backlog-index.md` och undantas från att indexera sig själv.
 
 ## Deliverables
 
@@ -30,7 +30,7 @@ Göra `pdm run index-backlog` kompatibel med backlog-valideringen, så att index
 
 ## Acceptance Criteria
 
-- [ ] `pdm run index-backlog` passerar och skapar/uppdaterar `docs/backlog/README-index.md`.
+- [ ] `pdm run index-backlog` passerar och skapar/uppdaterar `docs/backlog/backlog-index.md`.
 
 ## Checklist
 

@@ -35,7 +35,7 @@ Etablera en stabil portal för Hulebäcksgymnasiets projektveckor (start: FN-rol
 ## Active Epics
 
 1. `docs/backlog/epics/epic-doc-as-code-governance.md`
-2. `docs/backlog/epics/epic-fn-rollspel-v43-portal-mvp.md`
+2. `docs/backlog/epics/epic-fn-rollspel-v43-portal-mvp-fn-rollspel-v-43-portal-mvp-överlämning-navigation.md`
 
 ## Acceptance Criteria
 

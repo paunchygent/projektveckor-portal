@@ -167,7 +167,7 @@ Mål: få in din `.pub` i `~/.ssh/authorized_keys` på servern.
 1. Leta upp din **publika** nyckel-fil:
    - Windows: `%USERPROFILE%\\.ssh\\hemma_ed25519.pub`
    - WSL: `~/.ssh/hemma_ed25519.pub`
-1. Skicka `.pub` till servern med Taildrop (via Tailscale UI eller CLI).
+2. Skicka `.pub` till servern med Taildrop (via Tailscale UI eller CLI).
 
 Viktigt:
 
@@ -176,7 +176,7 @@ Viktigt:
 ### Server (hemma)
 
 1. Hämta Taildrop-filen (plats/kommando kan variera beroende på OS/Tailscale-installation).
-1. Lägg till nyckeln:
+2. Lägg till nyckeln:
 
 - `mkdir -p ~/.ssh`
 - `chmod 700 ~/.ssh`

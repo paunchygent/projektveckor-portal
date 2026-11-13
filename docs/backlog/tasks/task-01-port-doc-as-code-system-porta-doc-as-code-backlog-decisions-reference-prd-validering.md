@@ -10,9 +10,9 @@ related:
   - "docs/docs-structure-spec.md"
   - "docs/_meta/docs-contract.yaml"
   - "docs/backlog/stories/story-doc-as-code-mvp.md"
-  - "docs/backlog/tasks/task-02-pyproject-toml-for-pdm-scripts.md"
-  - "docs/backlog/tasks/task-03-backlog-index-kontraktsformat.md"
-  - "docs/backlog/tasks/task-04-frontend-ts-force-consistent-casing.md"
+  - "docs/backlog/tasks/task-02-pyproject-toml-for-pdm-scripts-gör-pyproject-toml-giltig-för-pdm-scripts-kolon-nycklar.md"
+  - "docs/backlog/tasks/task-03-backlog-index-kontraktsformat-indexera-backlog-i-kontraktsformat-frontmatter-inga-h1.md"
+  - "docs/backlog/tasks/task-04-frontend-ts-force-consistent-casing-aktivera-forceconsistentcasinginfilenames-i-frontend.md"
 labels:
   - "docs-as-code"
 ---

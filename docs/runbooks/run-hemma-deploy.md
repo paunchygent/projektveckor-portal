@@ -11,14 +11,14 @@ system: hemma
 tags:
   - deploy
 links:
-  - docs/runbooks/runbook-ssh-hemma-windows-wsl.md
+  - docs/runbooks/run-ssh-hemma-windows-wsl.md
 ---
 
 Den här runbooken följer samma operativa stil som Skriptoteket/HuleEdu.
 
 ## Förutsättningar
 
-- SSH-access till Hemma (se `docs/runbooks/runbook-ssh-hemma-windows-wsl.md`).
+- SSH-access till Hemma (se `docs/runbooks/run-ssh-hemma-windows-wsl.md`).
 - Docker installerat på servern
 - Externt nätverk finns: `hule-network`
 - Reverse-proxy stack kör (nginx-proxy + LetsEncrypt companion)
