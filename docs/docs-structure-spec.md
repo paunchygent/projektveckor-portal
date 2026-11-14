@@ -34,7 +34,7 @@ Göra repo:t lätt att vidareutveckla över tid genom att ha en **spårbar** och
 
 - `pdm run validate-docs`: validerar att dokument följer docs-kontraktet.
 - `pdm run validate-backlog`: validerar att backlog-dokument följer mall/struktur.
-- `pdm run check:md`: markdown quality (prettier + markdownlint + extra checks).
+- `pdm run check-md-all`: the runtime's Markdown format check (mdformat).
 
 ## Invariant
 

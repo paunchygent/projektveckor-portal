@@ -115,13 +115,6 @@ skills-validate = "repository-governance-skills-validate"
 handoff-validate = "repository-governance-handoff-validate"
 precommit-install = "/usr/bin/env -u PYTHONPATH -u PEP582_PACKAGES pdm run --project ${HOME}/.codex/repository-governance-runtime repository-governance-hooks-install --repo-root ${PDM_PROJECT_ROOT}"
 
-# Markdown quality (Docforge-style: prettier + markdownlint-cli2)
-"lint:md" = "python -m scripts.maintenance.markdown_quality lint"
-"fix:md" = "python -m scripts.maintenance.markdown_quality fix"
-"format:md" = "python -m scripts.maintenance.markdown_quality format"
-"check:md" = "python -m scripts.maintenance.markdown_quality check"
-"autofix:md" = "python -m scripts.maintenance.markdown_quality autofix"
-
 # Frontend (run from repo root; Skriptoteket-style)
 "frontend:install" = "pnpm -C frontend install"
 "frontend:dev" = "pnpm -C frontend dev"

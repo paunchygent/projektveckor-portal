@@ -28,4 +28,4 @@ Snabbguide för hur vi skapar och validerar dokument i repo:t.
 
 - `pdm run validate-docs`
 - `pdm run validate-backlog`
-- `pdm run check:md`
+- `pdm run check-md-all`
