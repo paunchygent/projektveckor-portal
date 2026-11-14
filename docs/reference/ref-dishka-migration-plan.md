@@ -37,19 +37,23 @@ Vi vill ha en tydlig **composition root**, testbar wiring och stabila abstraktio
 ## Stegvis migrering (PR-slices)
 
 1. **Avgränsa “service registry”**
+
    - Alla externa beroenden (Identity client, Convert client, repos) exponeras som tydliga typer/ports.
    - `app.state` behålls som interim-lösning men samlas i en enda “registry”.
 
 2. **Inför Dishka i backend (utan att ändra beteende)**
+
    - Lägg till Dishka som dependency och skapa en `container` i `create_app()`.
    - Koppla Dishka-integrationen för FastAPI.
    - Låt routes gradvis byta från `request.app.state` till `FromDishka[...]`.
 
 3. **Flytta guards till Dishka**
+
    - Authenticator + Identity client injiceras via Dishka.
    - Guards för teacher/admin/CSRF blir tunna och testbara.
 
 4. **Rensa ut `app.state`**
+
    - När alla routes använder Dishka: ta bort registry-koden och behåll bara composition root.
 
 ## Designprinciper
