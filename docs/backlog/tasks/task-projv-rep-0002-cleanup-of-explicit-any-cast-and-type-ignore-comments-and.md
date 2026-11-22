@@ -7,10 +7,14 @@ owners:
   - kind: domain
     id: projektveckor-portal
 created: '2026-11-22'
-status: in_progress
+status: done
 closeout_review:
   record: inline
-  status: not_started
+  status: approved
+  reviewer: ruthless-reviewer
+  decided_at: '2026-11-22T13:42:47+00:00'
+  approval_protocol: agent-overseer:approved-review-closeout
+  approval_evidence: 'TASK-PROJV-REP-0002#closeout'
 task_kind: repository
 acceptance_criteria:
   - 'Given the repository''s tracked Python files, when `pyrefly check --error explicit-any --only explicit-any` runs over them with Pyrefly 1.4.1, then it reports no error, and rg finds no `cast(` call or `# type: ignore` comment outside an exception recorded in this task.'
@@ -74,3 +78,27 @@ fails the gate while mypy keeps covering its existing scope.
 | DCT-01 | Every permitted ignore is a coded single-line Pyrefly ignore with a reason comment; bare `# type: ignore` and `cast` stay forbidden. (TASK-SKILL-REP-0591)                                                                          |
 | DCT-02 | A governed repository whose typecheck does not run Pyrefly adds a typecheck producer `pyrefly check --config pyproject.toml --only explicit-any`; its other type checkers stay unchanged (Olof, 22 Nov 2026). (TASK-SKILL-REP-0591) |
 | DCT-03 | A test double or fixture typed `Any` is rewritten to the real class, a Protocol, or `object`; the typing reference gains no test-double exception (Olof, 22 Nov 2026). (TASK-SKILL-REP-0591)                                        |
+
+## Closeout
+
+Closed 2026-11-22 (`done`) by the Hemma orchestrator of TASK-SKILL-REP-0591
+(Claude session `5d828ad9`). `land-worktree` runs the task check at the merge.
+
+Commits: `535381e` (meta.yaml literals narrowed instead of type-ignore
+comments), `832d100` (settings sync on runtime 0.11.430, DCT-13 ruff and
+pytest exceptions, Pyrefly 1.4.1 in the setup groups, composite typecheck
+producer) and `6b3686d` (review F1 repair: the Pyrefly sub-command takes no
+positional targets, so it checks the whole `typecheck-includes` in project
+mode).
+
+Review: `review-task-projv-rep-0002-832d100.md`, `changes_requested` with one
+medium finding, F1: a module directly under `src/` escaped the gate because
+Pyrefly received only the cohort targets. F1 was admitted on its repair commit
+`6b3686d`. The review found the meta.yaml rewrite behavior-preserving, tracked
+Python clean of `Any`, `cast(` and ignores, and the only old-group lock change
+to be `coverage` 7.17.0 to 7.17.2, required by the generated tooling pin.
+
+Proof, 22 Nov 2026: `pdm run typecheck` runs mypy, then Pyrefly with
+`explicit-any` as an error, and passes. Disposable modules with
+`def f(x: Any) -> None` in `src/`, `src/projektveckor_portal/` and `scripts/`
+each made it fail with `Explicit Any is not allowed [explicit-any]`.
