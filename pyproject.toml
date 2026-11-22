@@ -23,6 +23,19 @@ dependencies = [
 ]
 
 [dependency-groups]
+# repository-governance:tooling-dependencies:start
+repository-governance-tooling = [
+    "coverage==7.17.2",
+    "pyrefly==1.4.1",
+    "pytest-asyncio==1.4.1.post1",
+    "pytest-cov==7.1.0",
+    "pytest-mock==3.17.0",
+    "pytest-timeout==2.4.0",
+    "pytest-xdist==3.8.0",
+    "testcontainers==4.15.0",
+    "yamllint==1.38.0",
+]
+# repository-governance:tooling-dependencies:end
 dev = [
   "ruff",
   "mypy",
@@ -41,7 +54,7 @@ repository = "projektveckor-portal"
 domain = ["projektveckor-portal"]
 
 [tool.repository-governance.setup]
-projects = [{ path = ".", groups = ["default", "dev"] }]
+projects = [{ path = ".", groups = ["default", "dev", "repository-governance-tooling"] }]
 
 [tool.repository-governance.quality]
 projects = [
@@ -74,6 +87,15 @@ kind = "path"
 path = "scripts"
 test-target = "none"
 typecheck = "root-typecheck"
+
+[tool.repository-governance.tooling]
+typecheck-includes = ["src", "scripts", "tests"]
+
+[tool.repository-governance.exceptions.ruff]
+reason = "projektveckor-portal keeps its own ruff settings table; TASK-SKILL-REP-0591 DCT-13 limits the settings sync to the shared Pyrefly table and pin."
+
+[tool.repository-governance.exceptions.pytest]
+reason = "projektveckor-portal keeps its own pytest settings table; TASK-SKILL-REP-0591 DCT-13 limits the settings sync to the shared Pyrefly table and pin."
 
 [tool.pdm.scripts]
 # repository-governance:bindings:start
@@ -109,7 +131,7 @@ dev = "uvicorn projektveckor_portal.app:app --host 127.0.0.1 --port 8000 --reloa
 "dev:lan" = "uvicorn projektveckor_portal.app:app --host 0.0.0.0 --port 8000 --reload"
 serve = "uvicorn projektveckor_portal.app:app --host 127.0.0.1 --port 8000"
 "serve:lan" = "uvicorn projektveckor_portal.app:app --host 0.0.0.0 --port 8000"
-typecheck-producer = "mypy --config-file ${PDM_PROJECT_ROOT}/pyproject.toml"
+typecheck-producer = {composite = ["mypy --config-file ${PDM_PROJECT_ROOT}/pyproject.toml", "pyrefly check --config ${PDM_PROJECT_ROOT}/pyproject.toml --only explicit-any"]}
 test-producer = "pytest -c ${PDM_PROJECT_ROOT}/pyproject.toml -q"
 skills-validate = "repository-governance-skills-validate"
 handoff-validate = "repository-governance-handoff-validate"
@@ -154,3 +176,14 @@ exclude = ["frontend/"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]
+
+# repository-governance:tooling-settings:start
+[tool.pyrefly]
+python-version = "3.13"
+project-includes = ["src", "scripts", "tests"]
+search-path = []
+ignore-missing-imports = []
+
+[tool.pyrefly.errors]
+explicit-any = "error"
+# repository-governance:tooling-settings:end
