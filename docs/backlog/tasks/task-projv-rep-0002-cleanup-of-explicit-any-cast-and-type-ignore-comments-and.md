@@ -7,7 +7,7 @@ owners:
   - kind: domain
     id: projektveckor-portal
 created: '2026-11-22'
-status: ready
+status: in_progress
 closeout_review:
   record: inline
   status: not_started
