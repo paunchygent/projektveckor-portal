@@ -10,6 +10,8 @@ from projektveckor_portal.interfaces.documents import (
     DocumentMeta,
     DocumentRecord,
     DocumentRepository,
+    SourceFormat,
+    Visibility,
 )
 
 
@@ -69,19 +71,17 @@ class FileSystemDocumentRepository(DocumentRepository):
             raw = {}
 
         title = str(raw.get("title", "")).strip() or doc_path
-        visibility = str(raw.get("visibility", "public")).strip()
-        if visibility not in {"public", "teacher"}:
-            visibility = "public"
+        visibility_value = str(raw.get("visibility", "public")).strip()
+        visibility: Visibility = "teacher" if visibility_value == "teacher" else "public"
 
-        source_format = str(raw.get("source_format", "markdown")).strip()
-        if source_format not in {"markdown", "html"}:
-            source_format = "markdown"
+        source_format_value = str(raw.get("source_format", "markdown")).strip()
+        source_format: SourceFormat = "html" if source_format_value == "html" else "markdown"
 
         return DocumentMeta(
             doc_path=doc_path,
             title=title,
-            visibility=visibility,  # type: ignore[arg-type]
-            source_format=source_format,  # type: ignore[arg-type]
+            visibility=visibility,
+            source_format=source_format,
         )
 
     def _dump_meta(self, meta: DocumentMeta) -> str:
