@@ -1,5 +1,5 @@
 # Production deployment for home server (hemma.hule.education)
-# Usage: docker compose -f compose.prod.yaml build && pdm run prod-compose -- up -d
+# Usage: docker compose -f compose.prod.yaml build && pdm run prod-compose up -d
 #
 # Secrets are not in this file and are not read from .env via env_file; they
 # reach the container through compose.secrets.prod.yaml, which only
@@ -31,7 +31,7 @@ services:
       PVP_DOCS_ROOT: ${PVP_DOCS_ROOT:?set in .env}
       PVP_EXPORTS_ROOT: ${PVP_EXPORTS_ROOT:?set in .env}
       PVP_IDENTITY_BASE_URL: ${PVP_IDENTITY_BASE_URL:?set in .env}
-      PVP_IDENTITY_INTROSPECT_URL: ${PVP_IDENTITY_INTROSPECT_URL:?set in .env}
+      PVP_IDENTITY_INTROSPECT_URL: ${PVP_IDENTITY_INTROSPECT_URL:-}
       PVP_COOKIE_SECURE: ${PVP_COOKIE_SECURE:?set in .env}
       PVP_COOKIE_SAMESITE: ${PVP_COOKIE_SAMESITE:?set in .env}
       PVP_AUTH_ACCESS_COOKIE_NAME: ${PVP_AUTH_ACCESS_COOKIE_NAME:?set in .env}

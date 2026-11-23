@@ -25,7 +25,7 @@ procedure is `docs/runbooks/run-hemma-deploy.md`.
 1. On server, create `.env` from `.env.example.prod` (configuration only).
 2. Build + run with Compose v2 (`docker compose`, never `docker-compose`):
    - `docker compose -f compose.prod.yaml build`
-   - `pdm run prod-compose -- up -d`
+   - `pdm run prod-compose up -d`
 3. Verify both:
    - `GET /healthz` returns 200
    - the start page loads on `https://projektveckor.hule.education`

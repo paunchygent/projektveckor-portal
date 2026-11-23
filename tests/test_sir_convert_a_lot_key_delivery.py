@@ -56,6 +56,16 @@ def test_prod_compose_runs_compose_through_agent_secrets() -> None:
     assert command.index("-f compose.prod.yaml") < command.index("-f compose.secrets.prod.yaml")
 
 
+def test_host_serve_runs_through_agent_secrets() -> None:
+    scripts = _pdm_scripts()
+    serve = scripts["serve"]
+    assert isinstance(serve, str)
+    assert serve.startswith("agent-secrets run --set projektveckor-portal-prod -- ")
+    serve_lan = scripts["serve:lan"]
+    assert isinstance(serve_lan, str)
+    assert "agent-secrets" not in serve_lan
+
+
 def test_dev_scripts_load_dev_env_file() -> None:
     scripts = _pdm_scripts()
     for name in ("dev", "dev:lan"):

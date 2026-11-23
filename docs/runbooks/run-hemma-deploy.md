@@ -39,7 +39,7 @@ På servern:
 2. Bygg (utan hemligheter):
    - `docker compose -f compose.prod.yaml build`
 3. Starta eller återskapa via wrappern, som sätter `SIR_CONVERT_A_LOT_V2_API_KEY` i processmiljön:
-   - `pdm run prod-compose -- up -d`
+   - `pdm run prod-compose up -d`
 
 Operativa compose-kommandon som inte behöver hemligheter (`ps`, `logs`,
 `stop`, `config`, `exec`) körs mot basfilen direkt, utan wrappern:
