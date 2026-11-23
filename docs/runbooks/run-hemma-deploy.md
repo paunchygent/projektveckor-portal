@@ -35,14 +35,20 @@ Den här runbooken följer samma operativa stil som Skriptoteket/HuleEdu.
 
 På servern:
 
-1. Skapa `.env` från `.env.example.prod` (det här är **prod**-värden och ska ligga på servern).
-2. Bygg och starta:
+1. Skapa `.env` från `.env.example.prod` (det här är **prod**-värden och ska ligga på servern). `.env` håller bara konfiguration — hemligheter kommer via `agent-secrets`.
+2. Bygg (utan hemligheter):
    - `docker compose -f compose.prod.yaml build`
-   - `docker compose -f compose.prod.yaml up -d`
+3. Starta eller återskapa via wrappern, som sätter `SIR_CONVERT_A_LOT_V2_API_KEY` i processmiljön:
+   - `pdm run prod-compose -- up -d`
+
+Operativa compose-kommandon som inte behöver hemligheter (`ps`, `logs`,
+`stop`, `config`, `exec`) körs mot basfilen direkt, utan wrappern:
+
+- `docker compose -f compose.prod.yaml ps` (osv.)
 
 Lokalt (dev):
 
-- Skapa din lokala `.env` från `.env.example.dev` (dev-värden) och kör `pdm run dev`.
+- Skapa din lokala `.env.dev` från `.env.example.dev` (dev-värden) och kör `pdm run dev`.
 
 ## Verifiera
 

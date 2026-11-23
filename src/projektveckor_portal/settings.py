@@ -3,11 +3,12 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Literal
 
+from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_prefix="PVP_", env_file=".env", extra="ignore")
+    model_config = SettingsConfigDict(env_prefix="PVP_", extra="ignore")
 
     environment: str = "dev"
     service_name: str = "projektveckor-portal"
@@ -21,7 +22,9 @@ class Settings(BaseSettings):
     identity_introspect_url: str | None = None
 
     sir_convert_a_lot_base_url: str | None = None
-    sir_convert_a_lot_api_key: str | None = None
+    sir_convert_a_lot_api_key: str | None = Field(
+        default=None, validation_alias="SIR_CONVERT_A_LOT_V2_API_KEY"
+    )
 
     # Auth cookies (portal-owned, short-term BFF)
     auth_access_cookie_name: str = "pvp_access_token"
