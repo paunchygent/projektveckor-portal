@@ -17,12 +17,15 @@ procedure is `docs/runbooks/run-hemma-deploy.md`.
   (`agent-secrets run --set projektveckor-portal-prod`), which injects
   `SIR_CONVERT_A_LOT_V2_API_KEY` into the process environment. `ps`, `logs`,
   `stop`, `config` and `exec` run against `compose.prod.yaml` alone.
-- `.env.example.prod` is the template for the server `.env`; `.env` holds
-  configuration only, and real secrets never enter Git.
+- `.env.example.prod` is the template for the server `.env`, which
+  `compose.prod.yaml` passes to `web` through `env_file`. `.env` holds
+  configuration; the app reads the Sir key only from the process environment,
+  never from `.env`. The key line leaves the production `.env` only at the
+  approved live switch (TASK-SKILL-18-03-02). Real secrets never enter Git.
 
 ## Minimal deploy steps
 
-1. On server, create `.env` from `.env.example.prod` (configuration only).
+1. On server, create `.env` from `.env.example.prod` (configuration).
 2. Build + run with Compose v2 (`docker compose`, never `docker-compose`):
    - `docker compose -f compose.prod.yaml build`
    - `pdm run prod-compose up -d`

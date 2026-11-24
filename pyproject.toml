@@ -127,8 +127,8 @@ staleness-audit = "repository-governance-staleness-audit --repo-root ${PDM_PROJE
 publish-main = "repository-governance-publish-main --repository-root ${PDM_PROJECT_ROOT}"
 verify-main-publication = "repository-governance-verify-main-publication --repository-root ${PDM_PROJECT_ROOT}"
 # repository-governance:auxiliary-bindings:end
-dev = {cmd = "uvicorn projektveckor_portal.app:app --host 127.0.0.1 --port 8000 --reload", env_file = ".env.dev"}
-"dev:lan" = {cmd = "uvicorn projektveckor_portal.app:app --host 0.0.0.0 --port 8000 --reload", env_file = ".env.dev"}
+dev = "uvicorn projektveckor_portal.app:app --host 127.0.0.1 --port 8000 --reload"
+"dev:lan" = "uvicorn projektveckor_portal.app:app --host 0.0.0.0 --port 8000 --reload"
 serve = "agent-secrets run --set projektveckor-portal-prod -- uvicorn projektveckor_portal.app:app --host 127.0.0.1 --port 8000"
 "serve:lan" = "uvicorn projektveckor_portal.app:app --host 0.0.0.0 --port 8000"
 prod-compose = "agent-secrets run --set projektveckor-portal-prod -- docker compose -f compose.prod.yaml -f compose.secrets.prod.yaml"

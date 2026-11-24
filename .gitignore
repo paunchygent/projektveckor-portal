@@ -1,6 +1,5 @@
 .DS_Store
 .env
-.env.dev
 .venv/
 __pycache__/
 .mypy_cache/

@@ -10,7 +10,7 @@ Portal för projektveckor (t.ex. FN-rollspel v.43) som hostas på `hule.educatio
 ## Auth (dev)
 
 - Logga in via `http://127.0.0.1:5173/login` (tunn proxy mot HuleEdu Identity).
-- Kräver att du satt `PVP_IDENTITY_BASE_URL` (och ev. `PVP_IDENTITY_INTROSPECT_URL`) i `.env.dev` (`cp .env.example.dev .env.dev`).
+- Kräver att du satt `PVP_IDENTITY_BASE_URL` (och ev. `PVP_IDENTITY_INTROSPECT_URL`) i `.env`. `.env` håller bara konfiguration; Sir-nyckeln `SIR_CONVERT_A_LOT_V2_API_KEY` kommer från agent-secrets (`pdm run serve`), aldrig från filen.
 
 ## Docs
 

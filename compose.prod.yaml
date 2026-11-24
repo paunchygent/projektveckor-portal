@@ -1,10 +1,10 @@
 # Production deployment for home server (hemma.hule.education)
 # Usage: docker compose -f compose.prod.yaml build && pdm run prod-compose up -d
 #
-# Secrets are not in this file and are not read from .env via env_file; they
-# reach the container through compose.secrets.prod.yaml, which only
+# .env is configuration; the app never reads the Sir Convert a Lot key from it.
+# The key reaches the container through compose.secrets.prod.yaml, which only
 # `pdm run prod-compose` (agent-secrets run --set projektveckor-portal-prod)
-# passes. .env keeps configuration only.
+# passes. ps, logs, stop, config and exec use this file alone.
 #
 # Prerequisites:
 # - External network: docker network create hule-network
@@ -21,6 +21,8 @@ services:
     image: projektveckor-portal-web:latest
     container_name: projektveckor-portal-web
     restart: unless-stopped
+    env_file:
+      - .env
     environment:
       PVP_ENVIRONMENT: production
       PVP_SERVICE_VERSION: "0.1.0"
@@ -28,16 +30,6 @@ services:
       VIRTUAL_HOST: ${VIRTUAL_HOST:-projektveckor.hule.education}
       VIRTUAL_PORT: "8000"
       LETSENCRYPT_HOST: ${LETSENCRYPT_HOST:-projektveckor.hule.education}
-      PVP_DOCS_ROOT: ${PVP_DOCS_ROOT:?set in .env}
-      PVP_EXPORTS_ROOT: ${PVP_EXPORTS_ROOT:?set in .env}
-      PVP_IDENTITY_BASE_URL: ${PVP_IDENTITY_BASE_URL:?set in .env}
-      PVP_IDENTITY_INTROSPECT_URL: ${PVP_IDENTITY_INTROSPECT_URL:-}
-      PVP_COOKIE_SECURE: ${PVP_COOKIE_SECURE:?set in .env}
-      PVP_COOKIE_SAMESITE: ${PVP_COOKIE_SAMESITE:?set in .env}
-      PVP_AUTH_ACCESS_COOKIE_NAME: ${PVP_AUTH_ACCESS_COOKIE_NAME:?set in .env}
-      PVP_AUTH_REFRESH_COOKIE_NAME: ${PVP_AUTH_REFRESH_COOKIE_NAME:?set in .env}
-      PVP_CSRF_COOKIE_NAME: ${PVP_CSRF_COOKIE_NAME:?set in .env}
-      PVP_SIR_CONVERT_A_LOT_BASE_URL: ${PVP_SIR_CONVERT_A_LOT_BASE_URL:?set in .env}
     expose:
       - "8000"
     networks:

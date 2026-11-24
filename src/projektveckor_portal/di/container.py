@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 from pathlib import Path
 
 from dishka import Provider, Scope, make_async_container, provide
@@ -76,12 +77,13 @@ class _PortalProvider(Provider):
 
     @provide(scope=Scope.APP)
     def _conversion_client(self, settings: Settings) -> ConversionClient | None:
-        if not settings.sir_convert_a_lot_base_url or not settings.sir_convert_a_lot_api_key:
+        api_key = os.environ.get("SIR_CONVERT_A_LOT_V2_API_KEY")
+        if not settings.sir_convert_a_lot_base_url or not api_key:
             return None
         return SirConvertALotV2Client(
             config=SirConvertALotConfig(
                 base_url=settings.sir_convert_a_lot_base_url,
-                api_key=settings.sir_convert_a_lot_api_key,
+                api_key=api_key,
             )
         )
 
