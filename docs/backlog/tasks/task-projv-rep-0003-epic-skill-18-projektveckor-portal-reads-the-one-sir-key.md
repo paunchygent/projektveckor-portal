@@ -7,10 +7,14 @@ owners:
   - kind: domain
     id: projektveckor-portal
 created: '2026-11-23'
-status: in_progress
+status: done
 closeout_review:
   record: inline
-  status: not_started
+  status: approved
+  reviewer: ruthless-reviewer
+  decided_at: '2026-11-24T08:02:48Z'
+  approval_protocol: agent-overseer:approved-review-closeout
+  approval_evidence: "TASK-PROJV-REP-0003#closeout; review 727bbcf2 changes_requested at d0f8c72 (dev env_file fallback, serve lost config, guarded base allowlist, text-pinned tests); repair 776eb2f; rereview 6d4aa280 changes_requested (dev read the production .env symlink, base env_file forwarded key entries); repair 22acde7; rereview 22e21c50 approved at 22acde7."
 task_kind: repository
 acceptance_criteria:
   - Given the portal, when the leaf closes, then Settings reads SIR_CONVERT_A_LOT_V2_API_KEY, compose.prod.yaml stops passing .env secrets through env_file and gets the key from compose.secrets.prod.yaml through `pdm run prod-compose` (`agent-secrets run --set projektveckor-portal-prod`), and `pdm run dev` no longer loads the production env file.
@@ -64,3 +68,25 @@ reach a container this leaf cannot route through the wrapper.
 | --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | D1  | EPIC-SKILL-18 decided terms apply.                                                                                                                                                                               |
 | D2  | pdm run dev reads .env.dev through PVP_SETTINGS_FILE and never .env; the base compose names each non-secret setting as a value-less environment entry, so no .env entry outside that list reaches the container. |
+
+## Closeout
+
+Commits through `22acde7`: the Sir key is not a Settings field and is read
+only from `os.environ` (`SIR_CONVERT_A_LOT_V2_API_KEY`) where the converter is
+built; `serve` and `prod-compose` run through `agent-secrets run --set projektveckor-portal-prod --`; `dev`/`dev:lan` read `.env.dev` through
+`PVP_SETTINGS_FILE` (D2); the base compose names each non-secret setting as a
+value-less entry and the key lives only in `compose.secrets.prod.yaml`.
+
+Review rounds:
+
+- Review `727bbcf2` `changes_requested` at `d0f8c72` (dev env_file fallback,
+  serve lost config, guarded base allowlist, text-pinned tests); repair
+  `776eb2f`.
+- Rereview `6d4aa280` `changes_requested` (dev read the production `.env`
+  symlink, base env_file forwarded key entries); repair `22acde7`.
+- Rereview `22e21c50` `approved` at `22acde7`.
+
+The live switch (recreate through `pdm run prod-compose`, signed-in check,
+deleting the Sir key lines from the production `.env`) is skill-repository
+TASK-SKILL-18-03-02, which needs Olof's approval. No projektveckor-portal
+container existed on Hemma on 24 Nov 2026 (`docker ps -a`).
