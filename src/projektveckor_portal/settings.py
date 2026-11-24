@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import os
+from collections.abc import Callable
 from pathlib import Path
 from typing import Literal
 
@@ -31,4 +33,16 @@ class Settings(BaseSettings):
     cookie_samesite: Literal["lax", "strict", "none"] = "lax"
 
 
-settings = Settings()
+def load_settings() -> Settings:
+    """Build settings from PVP_SETTINGS_FILE, or `.env` when it is unset.
+
+    `pdm run dev` sets PVP_SETTINGS_FILE=.env.dev; a missing file yields defaults,
+    never `.env`.
+    """
+    # mypy sees only the field keywords on Settings; pydantic-settings also accepts the
+    # `_env_file` keyword, which overrides model_config.env_file for this instance.
+    build: Callable[..., Settings] = Settings
+    return build(_env_file=os.environ.get("PVP_SETTINGS_FILE", ".env"))
+
+
+settings = load_settings()

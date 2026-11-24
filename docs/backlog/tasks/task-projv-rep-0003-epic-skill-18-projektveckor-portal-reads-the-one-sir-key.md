@@ -60,6 +60,7 @@ reach a container this leaf cannot route through the wrapper.
 
 ## Decided Contract Terms
 
-| ID  | Decided contract term                                   |
-| --- | ------------------------------------------------------- |
-| D1  | EPIC-SKILL-18 decided terms apply; this leaf adds none. |
+| ID  | Decided contract term                                                                                                                                                                                            |
+| --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| D1  | EPIC-SKILL-18 decided terms apply.                                                                                                                                                                               |
+| D2  | pdm run dev reads .env.dev through PVP_SETTINGS_FILE and never .env; the base compose names each non-secret setting as a value-less environment entry, so no .env entry outside that list reaches the container. |
