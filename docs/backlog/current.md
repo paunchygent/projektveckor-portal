@@ -33,7 +33,7 @@ labels: []
 
 1. Koppla portalen mot riktiga tjänster i dev/prod:
    - sätt `PVP_IDENTITY_BASE_URL` + `PVP_IDENTITY_INTROSPECT_URL`
-   - sätt `PVP_SIR_CONVERT_A_LOT_*` och verifiera PDF/DOCX-export end-to-end.
+   - sätt `PVP_SIR_CONVERT_A_LOT_BASE_URL` i `.env`; nyckeln `SIR_CONVERT_A_LOT_V2_API_KEY` levereras av `pdm run prod-compose` / `pdm run serve` (agent-secrets), inte av `.env`; verifiera PDF/DOCX-export end-to-end.
 2. Implementera `task-12` i frontend: doc-editor + export-knappar + statuspolling (baserat på `/api/admin/exports/...`).
 3. Förbättra roll-gränser: teacher-only för redigering/export, admin-only för framtida no-code/konfiguration.
 4. Starta Dishka-migrering steg 1 (container + wiring i composition root) utan att ändra externt beteende.

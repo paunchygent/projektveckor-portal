@@ -1,5 +1,12 @@
 # Production deployment for home server (hemma.hule.education)
-# Usage: docker compose -f compose.prod.yaml build && docker compose -f compose.prod.yaml up -d
+# Usage: docker compose -f compose.prod.yaml build && pdm run prod-compose up -d
+#
+# .env is configuration; the app never reads the Sir Convert a Lot key from it.
+# `web` receives only the PVP_* settings named under `environment` below; no other
+# .env entry reaches the container.
+# The key reaches the container through compose.secrets.prod.yaml, which only
+# `pdm run prod-compose` (agent-secrets run --set projektveckor-portal-prod)
+# passes. ps, logs, stop, config and exec use this file alone.
 #
 # Prerequisites:
 # - External network: docker network create hule-network
@@ -16,11 +23,22 @@ services:
     image: projektveckor-portal-web:latest
     container_name: projektveckor-portal-web
     restart: unless-stopped
-    env_file:
-      - .env
     environment:
       PVP_ENVIRONMENT: production
       PVP_SERVICE_VERSION: "0.1.0"
+      # Value-less entries: Compose takes the value from the project .env (or the
+      # shell) and leaves the variable unset when absent, so Settings keeps its default.
+      PVP_SERVICE_NAME:
+      PVP_DOCS_ROOT:
+      PVP_EXPORTS_ROOT:
+      PVP_IDENTITY_BASE_URL:
+      PVP_IDENTITY_INTROSPECT_URL:
+      PVP_SIR_CONVERT_A_LOT_BASE_URL:
+      PVP_AUTH_ACCESS_COOKIE_NAME:
+      PVP_AUTH_REFRESH_COOKIE_NAME:
+      PVP_CSRF_COOKIE_NAME:
+      PVP_COOKIE_SECURE:
+      PVP_COOKIE_SAMESITE:
       PYTHONPATH: /app/src
       VIRTUAL_HOST: ${VIRTUAL_HOST:-projektveckor.hule.education}
       VIRTUAL_PORT: "8000"

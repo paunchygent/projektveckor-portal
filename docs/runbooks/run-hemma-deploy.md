@@ -35,14 +35,20 @@ Den här runbooken följer samma operativa stil som Skriptoteket/HuleEdu.
 
 På servern:
 
-1. Skapa `.env` från `.env.example.prod` (det här är **prod**-värden och ska ligga på servern).
-2. Bygg och starta:
+1. Skapa `.env` från `.env.example.prod` (det här är **prod**-värden och ska ligga på servern). `.env` håller konfiguration och `compose.prod.yaml` släpper bara in de `PVP_*`-namn som står som värdelösa poster under `web.environment` (ingen `env_file`); Sir-nyckeln `SIR_CONVERT_A_LOT_V2_API_KEY` läses aldrig från `.env` utan kommer från `agent-secrets` (set `projektveckor-portal-prod`). Raden med nyckeln lämnar produktions-`.env` först vid det godkända live-bytet (TASK-SKILL-18-03-02); ändra inte produktionsfilen före det.
+2. Bygg (utan hemligheter):
    - `docker compose -f compose.prod.yaml build`
-   - `docker compose -f compose.prod.yaml up -d`
+3. Starta eller återskapa via wrappern, som sätter `SIR_CONVERT_A_LOT_V2_API_KEY` i processmiljön:
+   - `pdm run prod-compose up -d`
+
+Operativa compose-kommandon som inte behöver hemligheter (`ps`, `logs`,
+`stop`, `config`, `exec`) körs mot basfilen direkt, utan wrappern:
+
+- `docker compose -f compose.prod.yaml ps` (osv.)
 
 Lokalt (dev):
 
-- Skapa din lokala `.env` från `.env.example.dev` (dev-värden) och kör `pdm run dev`.
+- Skapa din lokala `.env.dev` från `.env.example.dev` (dev-värden) och kör `pdm run dev`. Kommandot sätter `PVP_SETTINGS_FILE=.env.dev` och läser aldrig `.env`; saknas `.env.dev` gäller standardvärden. `.env.dev` innehåller bara konfiguration; en Sir-nyckel levereras av `agent-secrets` (`pdm run serve`), inte av filen.
 
 ## Verifiera
 
